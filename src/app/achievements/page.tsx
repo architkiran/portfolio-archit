@@ -7,7 +7,7 @@ export default function Achievements() {
     {
       id: 1,
       title: "Best Project Award",
-      year: "2024",
+      year: "2025",
       img: "/Best-Project.jpeg",
       description:
         "Received the Best Project Award for delivering an innovative and impactful solution as part of a four-member team. I contributed to technical depth, creative problem-solving, and seamless collaboration to ensure real-world applicability.",
@@ -15,7 +15,7 @@ export default function Achievements() {
     {
       id: 2,
       title: "Exhibition Showcase",
-      year: "2024",
+      year: "2025",
       img: "/exhibition.jpg",
       description:
         "Our project was showcased at a university-level exhibition, where I presented its technical depth, scalability, and practical impact to professors, peers, and industry leaders.",
@@ -31,7 +31,7 @@ export default function Achievements() {
     {
       id: 4,
       title: "Certificate of Best Project Award",
-      year: "2024",
+      year: "2025",
       img: "/certificate.jpg", // ensure horizontal version is saved
       description:
         "Earned the Certificate of Best Project Award, recognizing my creativity, adaptability, and consistent contributions in building a solution with real-world impact.",
