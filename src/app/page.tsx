@@ -45,7 +45,7 @@ export default function Home() {
             transition={{ duration: 1, delay: 0.5 }}
             className="text-6xl md:text-7xl font-extrabold tracking-tight bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
           >
-            Archit 
+            Archit Kiran Kumar
           </motion.h1>
 
           {/* Subtitle */}
