@@ -45,7 +45,7 @@ export default function Home() {
             transition={{ duration: 1, delay: 0.5 }}
             className="text-6xl md:text-7xl font-extrabold tracking-tight bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
           >
-            Archit Kiran Kumar
+            Archit 
           </motion.h1>
 
           {/* Subtitle */}
@@ -218,7 +218,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center">
           <div className="flex justify-center">
             <Image
-              src="/Best-Project.JPG"
+              src="/Best-Project.jpg"
               alt="Best Project Award"
               width={420}
               height={280}
