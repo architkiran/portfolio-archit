@@ -113,7 +113,7 @@ export default function About() {
       <h3 className="text-2xl font-semibold text-white">
         Front-End Developer Intern — Millicent Technologies
       </h3>
-      <p className="text-sm text-gray-400 mb-2">(2023)</p>
+      <p className="text-sm text-gray-400 mb-2">(2025)</p>
       <p>
         Built responsive client-facing web applications with React/Next.js.  
         Collaborated across teams to ship features, improve performance, and polish UI/UX.  
@@ -134,7 +134,7 @@ export default function About() {
       <h3 className="text-2xl font-semibold text-white">
         Software Development Intern — InternPE
       </h3>
-      <p className="text-sm text-gray-400 mb-2">(2022)</p>
+      <p className="text-sm text-gray-400 mb-2">(2024)</p>
       <p>
         Contributed to feature development and bug-fixing across the stack with a focus on clean, 
         maintainable code. Worked with RESTful APIs and modern front-end patterns, participated in code reviews, 

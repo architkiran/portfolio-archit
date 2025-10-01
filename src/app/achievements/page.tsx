@@ -18,7 +18,7 @@ export default function Achievements() {
       year: "2024",
       img: "/exhibition.jpg",
       description:
-        "Our project was showcased at a national-level exhibition, where I presented its technical depth, scalability, and practical impact to professors, peers, and industry leaders.",
+        "Our project was showcased at a universitys-level exhibition, where I presented its technical depth, scalability, and practical impact to professors, peers, and industry leaders.",
     },
     {
       id: 3,
