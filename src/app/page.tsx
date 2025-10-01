@@ -245,7 +245,7 @@ export default function Home() {
           <div className="order-2 md:order-1 max-w-xl text-center md:text-left">
             <h3 className="text-3xl font-semibold text-white mb-4">Exhibition Showcase</h3>
             <p className="text-gray-300 text-lg leading-relaxed">
-              Represented our project at a <span className="font-bold">national-level exhibition</span>, where we
+              Represented our project at a <span className="font-bold">university-level exhibition</span>, where we
               demonstrated scalability and real-world impact to professors, peers, and industry leaders. This experience
               strengthened my ability to communicate complex ideas clearly and adapt to diverse audiences.
             </p>
