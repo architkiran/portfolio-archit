@@ -218,7 +218,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center">
           <div className="flex justify-center">
             <Image
-              src="/Best-Project.jpg"
+              src="/Best-Project.jpeg"
               alt="Best Project Award"
               width={420}
               height={280}
