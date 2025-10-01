@@ -8,7 +8,7 @@ export default function Achievements() {
       id: 1,
       title: "Best Project Award",
       year: "2024",
-      img: "/best-project.jpg",
+      img: "/best-project.jpeg",
       description:
         "Received the Best Project Award for delivering an innovative and impactful solution as part of a four-member team. I contributed to technical depth, creative problem-solving, and seamless collaboration to ensure real-world applicability.",
     },
