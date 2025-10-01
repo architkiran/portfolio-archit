@@ -55,7 +55,7 @@ export default function Home() {
       transition={{ duration: 1, delay: 1 }}
       className="mt-4 text-lg md:text-xl text-gray-300"
     >
-      Master’s in Computer Science @ Boston University
+      Master&apos;s in Computer Science @ Boston University
     </motion.p>
 
     {/* Buttons */}
@@ -142,7 +142,7 @@ export default function Home() {
               Safeguarding Bharat's EV Charging Networks
             </h3>
             <p className="text-gray-300 mb-4">
-              Strengthening India’s EV charging networks through OCPP protocol resilience. 
+              Strengthening India&apos;s EV charging networks through OCPP protocol resilience. 
               Focused on identifying vulnerabilities, simulating real-world threats, 
               and proposing secure frameworks.
             </p>
