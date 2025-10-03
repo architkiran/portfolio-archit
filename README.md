@@ -1,41 +1,98 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌐 Archit Kiran Kumar — Portfolio Website  
 
-## Getting Started
+✨ Welcome to the source code of my **personal portfolio website**, built using **Next.js, Tailwind CSS, and Vercel**.  
 
-First, run the development server:
+👉 **[Visit My Portfolio Website 🚀](https://portfolio-archit-gh8k2a8mi-architkirans-projects.vercel.app)**  
 
-```bash
+---
+
+## 🎨 About the Project
+This portfolio showcases **who I am, what I build, and the projects I’ve worked on**.  
+It is designed to be **modern, responsive, and blazing fast**, highlighting my journey as a **Computer Science student @ Boston University**.  
+
+⚡ Features:  
+- ✨ Beautiful and minimal UI with **TailwindCSS**  
+- ⚛️ **Next.js** framework for performance and SEO  
+- 📱 Fully **responsive design** (mobile, tablet, desktop)  
+- 🔗 Sections for **About Me, Projects, Tech Stack, Contact**  
+- 🚀 Hosted on **Vercel** for smooth deployment  
+
+---
+
+## 🛠️ Tech Stack  
+
+<p align="left">
+  <img src="https://img.shields.io/badge/Next.js-black?logo=nextdotjs&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/TailwindCSS-38B2AC?logo=tailwindcss&logoColor=white&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white&style=for-the-badge" />
+</p>  
+
+---
+
+## 📂 Project Structure  
+
+```plaintext
+portfolio-archit/
+│
+├── app/                 # Next.js app directory
+│   ├── page.tsx         # Home page
+│   ├── components/      # Reusable UI components
+│   ├── styles/          # Global styles and Tailwind configs
+│
+├── public/              # Static assets (images, icons, favicons)
+│
+├── package.json         # Project dependencies
+├── tailwind.config.js   # Tailwind configuration
+├── next.config.js       # Next.js configuration
+└── README.md            # Project overview (this file)
+```
+---
+## 🚀 Getting Started
+
+Follow these steps to run the project locally:
+```
+1. Clone the repository
+
+git clone https://github.com/architkiran/portfolio-archit.git
+cd portfolio-archit
+
+2. Install dependencies
+
+npm install
+# or
+yarn install
+
+
+3. Run the development server
+
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+
+4. Open the app
+Navigate to http://localhost:3000 in your browser 🎉
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📢 Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This portfolio is deployed using Vercel → https://portfolio-archit-gh8k2a8mi-architkirans-projects.vercel.app/
+.
 
-## Learn More
+## ✨ Screenshots
 
-To learn more about Next.js, take a look at the following resources:
+(Add screenshots of your homepage, projects section, and contact form here for visual appeal!)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🤝 Contributions
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This is my personal portfolio project, but I’d love feedback and suggestions.
 
-## Deploy on Vercel
+## Steps to contribute:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# portfolio-archit
-This is complete Next.js, tailwind css project on my portfolio. check it out !! 
->>>>>>> 62fb8b13dbe87c1283a0e3c10323488d6b9dc191
+- Fork the repo
+- Create a new branch (feature-xyz)
+- Make your changes
+- Submit a Pull Request
