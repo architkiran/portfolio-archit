@@ -82,7 +82,7 @@ export default function Contact() {
             type="submit"
             className="w-full py-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-xl shadow-lg hover:shadow-purple-500/40 hover:scale-105 transition"
           >
-            Send Message 🚀
+            Send Message 
           </button>
 
           {/* Toast Notification */}
