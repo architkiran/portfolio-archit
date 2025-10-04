@@ -54,8 +54,8 @@ export default function FloatingBall({ size, duration = 10 }: BallProps) {
         backgroundColor: "white",
         width: size,
         height: size,
-        filter: "blur(10px)", // smaller blur for softer balls
-        opacity: 1,
+        filter: "blur(30px)", // smaller blur for softer balls
+        opacity: 0.3,
       }}
     />
   )

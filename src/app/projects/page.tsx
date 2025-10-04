@@ -35,7 +35,7 @@ const projects = [
     title: "Blockchain-based E-Voting System",
     description:
       "Engineered a secure, transparent, and tamper-proof e-voting system using blockchain. Ensured anonymity, verifiability, and immutability of votes while promoting trust in digital electoral processes.",
-    link: "https://github.com/architkiran/blockchain-evoting-system",
+    link: "https://github.com/architkiran/Blockchain-Based-Voting-",
   },
   {
     id: 6,
