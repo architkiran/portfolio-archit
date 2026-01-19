@@ -2,47 +2,66 @@
 import { motion } from "framer-motion"
 
 const projects = [
+  // Tier 1: Data & Business Analytics
   {
     id: 1,
-    title: "Safeguarding Bharat's EV Charging Networks",
+    title: "Boston-Area Price & Crime Prediction",
     description:
-      "A research-backed project strengthening India’s EV charging networks by addressing protocol-level vulnerabilities in OCPP. Focused on resilience against cyber threats to ensure a secure transition toward sustainable mobility.",
-    link: "https://github.com/architkiran/Safeguarding-Bharat-s-EV-Charging-Networks-Through-OCPP-Protocol-Resilience-",
+      "A data-driven decision support project analyzing crime rates and housing rent trends to help residents and newcomers make safer, more informed housing choices in the Boston area.",
+    link: "https://github.com/architkiran/Boston-Area-Price-and-Crime-Prediction",
   },
   {
     id: 2,
-    title: "Post-Quantum IoT Framework",
+    title: "Music Review Rating Prediction (Kaggle, Macro-F1)",
     description:
-      "Designed a secure IoT communication framework resistant to quantum-based attacks. Integrated post-quantum cryptography while keeping performance optimized for resource-constrained IoT devices.",
-    link: "https://github.com/architkiran/Post-Quantum-Communication-framework-for-IOT-Devices",
+      "Predicts reviewer ratings (1–5) of music releases using metadata and text features. A multi-class classification project evaluated using Macro F1 Score (per Kaggle rules).",
+    link: "https://github.com/architkiran/Music-Review-Rating-Prediction",
   },
   {
     id: 3,
-    title: "Traffic Data Analysis",
+    title: "Traffic Data Analysis (PySpark, Big Data)",
     description:
-      "Developed a big data pipeline using PySpark and analytics tools to analyze urban traffic flow. Delivered visual insights and predictive modeling for smarter transportation planning.",
+      "Built a PySpark-based big data pipeline to analyze and visualize urban traffic patterns, generating insights and predictive trends to support data-driven transportation planning.",
     link: "https://github.com/architkk/traffic-analysis",
   },
+
+  // Tier 2: Systems with Data Impact
   {
     id: 4,
-    title: "MERN Stack Projects",
+    title: "EV Charging Network Resilience (OCPP Security + Infrastructure Analytics)",
     description:
-      "Built full-stack web apps including a Car Rental System and Railway Management System. Developed using MongoDB, Express, React, and Node.js, focusing on usability, performance, and clean UI design.",
-    link: "https://github.com/architkiran/Car-Rental-System",
+      "Research-backed project strengthening India&apos;s EV charging infrastructure by analyzing OCPP protocol vulnerabilities and proposing resilient, secure frameworks for real-world deployment.",
+    link: "https://github.com/architkiran/Safeguarding-Bharat-s-EV-Charging-Networks-Through-OCPP-Protocol-Resilience-",
   },
   {
     id: 5,
     title: "Blockchain-based E-Voting System",
     description:
-      "Engineered a secure, transparent, and tamper-proof e-voting system using blockchain. Ensured anonymity, verifiability, and immutability of votes while promoting trust in digital electoral processes.",
+      "Engineered a secure, transparent, and tamper-resistant e-voting system using blockchain to support integrity, auditability, and trust in digital election processes.",
     link: "https://github.com/architkiran/Blockchain-Based-Voting-",
   },
+
+  // Tier 3: Engineering Proof
   {
     id: 6,
-    title: "Portfolio Website",
+    title: "Post-Quantum IoT Framework",
     description:
-      "The personal website you're exploring right now — designed and developed using Next.js, Tailwind CSS, and Framer Motion. Focused on clean aesthetics, smooth animations, and showcasing my journey as a developer.",
+      "Designed a secure IoT communication framework resilient to quantum-era attacks by integrating post-quantum cryptography while optimizing performance for resource-constrained devices.",
+    link: "https://github.com/architkiran/Post-Quantum-Communication-framework-for-IOT-Devices",
+  },
+  {
+    id: 7,
+    title: "Portfolio Website (This Site)",
+    description:
+      "Built with Next.js, Tailwind CSS, and Framer Motion to showcase analytics-focused projects and experience with a clean UI, smooth interactions, and polished presentation.",
     link: "https://github.com/architkiran/portfolio",
+  },
+  {
+    id: 8,
+    title: "MERN Stack Projects (Car Rental & Railway Management)",
+    description:
+      "Developed full-stack systems to manage bookings and workflows, focusing on data modeling, CRUD operations, and clean user flows using MongoDB, Express, React, and Node.js.",
+    link: "https://github.com/architkiran/Car-Rental-System",
   },
 ]
 
@@ -60,8 +79,8 @@ export default function Projects() {
           Projects
         </h1>
         <p className="mt-4 text-gray-400 max-w-2xl mx-auto text-lg">
-          A collection of my most impactful work exploring cybersecurity,
-          data analysis, blockchain, and full-stack development.
+          A collection of my most impactful work across data analysis, predictive modeling,
+          big data pipelines, and secure systems.
         </p>
       </motion.div>
 
@@ -75,7 +94,7 @@ export default function Projects() {
             rel="noopener noreferrer"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
+            transition={{ duration: 0.6, delay: index * 0.08 }}
             viewport={{ once: true }}
             className="group relative p-8 rounded-2xl bg-gray-900/60 backdrop-blur-md border border-gray-700 hover:border-purple-500 hover:shadow-[0_0_20px_rgba(168,85,247,0.5)] transition-all duration-300"
           >

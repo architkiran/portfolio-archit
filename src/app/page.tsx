@@ -114,10 +114,12 @@ export default function Home() {
           About Me
         </h2>
         <p className="max-w-3xl text-lg text-gray-300 leading-relaxed">
-          Passionate about building scalable web applications, uncovering insights through data, and creating seamless
-          user experiences. My work blends <span className="font-semibold">frontend engineering</span> with{" "}
-          <span className="font-semibold">data science</span> to turn ideas into impactful solutions. Always curious,
-          always learning, that&apos;s my approach to technology and problem-solving.
+          Passionate about transforming data into actionable insights while building scalable, user-focused solutions. 
+          My work bridges <span className="font-semibold">data analysis</span>, 
+          <span className="font-semibold">business insight</span>, and 
+          <span className="font-semibold">software engineering</span> to support informed decision-making and real-world impact. 
+          Driven by curiosity and continuous learning, I enjoy uncovering patterns, telling stories with data, 
+          and solving problems at the intersection of technology and analytics.
         </p>
         <a
           href="/about"
@@ -129,83 +131,92 @@ export default function Home() {
 
       {/* =================== Projects =================== */}
       <section
-        id="projects"
-        className="h-screen snap-start bg-gradient-to-b from-black via-gray-900 to-black flex flex-col items-center justify-center px-6"
+  id="projects"
+  className="h-screen snap-start bg-gradient-to-b from-black via-gray-900 to-black flex flex-col items-center justify-center px-6"
+>
+  <h2 className="text-5xl font-bold bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent mb-12">
+    Projects
+  </h2>
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-6xl w-full">
+    {/* Project 1 */}
+    <div className="rounded-lg bg-gray-800/60 p-6 shadow-lg hover:shadow-xl transition transform hover:scale-105">
+      <h3 className="text-2xl font-semibold text-white mb-2">
+        Boston-Area Price and Crime Prediction
+      </h3>
+      <p className="text-gray-300 mb-4">
+        Boston, MA, attracts around 45 million people each year, including tourists, students, and new residents, making it essential to provide 
+        reliable systems that help newcomers understand the city. 
+        This project focuses on delivering data-driven insights—such as crime rates and housing rents—to support informed residency decisions.
+      </p>
+      <a
+        href="https://github.com/architkiran/Boston-Area-Price-and-Crime-Prediction"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-block mt-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg shadow hover:scale-105 transition"
       >
-        <h2 className="text-5xl font-bold bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent mb-12">
-          Projects
-        </h2>
+        View Project →
+      </a>
+    </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-6xl w-full">
-          {/* Project 1 */}
-          <div className="rounded-lg bg-gray-800/60 p-6 shadow-lg hover:shadow-xl transition transform hover:scale-105">
-            <h3 className="text-2xl font-semibold text-white mb-2">Safeguarding Bharat&apos;s EV Charging Networks</h3>
-            <p className="text-gray-300 mb-4">
-              Strengthening India&apos;s EV charging networks through OCPP protocol resilience. Focused on identifying
-              vulnerabilities, simulating real-world threats, and proposing secure frameworks.
-            </p>
-            <a
-              href="https://github.com/architkiran/Safeguarding-Bharat-s-EV-Charging-Networks-Through-OCPP-Protocol-Resilience-"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg shadow hover:scale-105 transition"
-            >
-              View Project →
-            </a>
-          </div>
+    {/* Project 2 */}
+    <div className="rounded-lg bg-gray-800/60 p-6 shadow-lg hover:shadow-xl transition transform hover:scale-105">
+      <h3 className="text-2xl font-semibold text-white mb-2">
+        Music Review Rating Prediction
+      </h3>
+      <p className="text-gray-300 mb-4">
+        This project predicts reviewer ratings (1–5) of music releases using metadata and text features. It&apos;s a
+        multi-class classification problem, evaluated with Macro F1 Score (as per Kaggle rules).
+      </p>
+      <a
+        href="https://github.com/architkiran/Music-Review-Rating-Prediction"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-block mt-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg shadow hover:scale-105 transition"
+      >
+        View Project →
+      </a>
+    </div>
 
-          {/* Project 2 */}
-          <div className="rounded-lg bg-gray-800/60 p-6 shadow-lg hover:shadow-xl transition transform hover:scale-105">
-            <h3 className="text-2xl font-semibold text-white mb-2">Post-Quantum IoT Framework</h3>
-            <p className="text-gray-300 mb-4">
-              Designed a secure IoT communication framework resilient to quantum-computing threats. Integrated
-              post-quantum cryptography techniques while ensuring efficiency for resource-constrained devices.
-            </p>
-            <a
-              href="https://github.com/architkiran/Post-Quantum-Communication-framework-for-IOT-Devices"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg shadow hover:scale-105 transition"
-            >
-              View Project →
-            </a>
-          </div>
+    {/* Project 3 */}
+    <div className="rounded-lg bg-gray-800/60 p-6 shadow-lg hover:shadow-xl transition transform hover:scale-105">
+      <h3 className="text-2xl font-semibold text-white mb-2">
+        Traffic Data Analysis
+      </h3>
+      <p className="text-gray-300 mb-4">
+        Built a big data pipeline to analyze and visualize urban traffic patterns. Leveraged PySpark and analytics tools
+        to deliver insights for smarter transportation planning.
+      </p>
+      <a
+        href="https://github.com/architkk/traffic-analysis"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-block mt-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg shadow hover:scale-105 transition"
+      >
+        View Project →
+      </a>
+    </div>
 
-          {/* Project 3 */}
-          <div className="rounded-lg bg-gray-800/60 p-6 shadow-lg hover:shadow-xl transition transform hover:scale-105">
-            <h3 className="text-2xl font-semibold text-white mb-2">Traffic Data Analysis</h3>
-            <p className="text-gray-300 mb-4">
-              Built a big data pipeline to analyze and visualize urban traffic patterns. Leveraged PySpark and analytics
-              tools to deliver insights for smarter transportation planning.
-            </p>
-            <a
-              href="https://github.com/architkk/traffic-analysis"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg shadow hover:scale-105 transition"
-            >
-              View Project →
-            </a>
-          </div>
-
-          {/* Project 4 */}
-          <div className="rounded-lg bg-gray-800/60 p-6 shadow-lg hover:shadow-xl transition transform hover:scale-105">
-            <h3 className="text-2xl font-semibold text-white mb-2">MERN Stack Projects</h3>
-            <p className="text-gray-300 mb-4">
-              Developed full-stack systems including a Car Rental System and Railway Management System. Built with
-              MongoDB, Express, React, and Node.js, focusing on usability and performance.
-            </p>
-            <a
-              href="https://github.com/architkiran/Car-Rental-System"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg shadow hover:scale-105 transition"
-            >
-              View Project →
-            </a>
-          </div>
-        </div>
-      </section>
+    {/* Project 4 */}
+    <div className="rounded-lg bg-gray-800/60 p-6 shadow-lg hover:shadow-xl transition transform hover:scale-105">
+      <h3 className="text-2xl font-semibold text-white mb-2">
+        Safeguarding Bharat&apos;s EV Charging Networks
+      </h3>
+      <p className="text-gray-300 mb-4">
+        Strengthening India&apos;s EV charging networks through OCPP protocol resilience. Focused on identifying
+        vulnerabilities, simulating real-world threats, and proposing secure frameworks.
+      </p>
+      <a
+        href="https://github.com/architkiran/Safeguarding-Bharat-s-EV-Charging-Networks-Through-OCPP-Protocol-Resilience-"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-block mt-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg shadow hover:scale-105 transition"
+      >
+        View Project →
+      </a>
+    </div>
+  </div>
+</section>
 
       {/* =================== Achievements =================== */}
       <section

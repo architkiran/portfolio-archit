@@ -39,7 +39,7 @@ export default function About() {
             I am <span className="font-semibold text-white">Archit Kiran Kumar</span>, a passionate learner 
             and builder currently pursuing my Master of Science in Computer Science at Boston University. 
             My journey has been fueled by a deep curiosity for{" "}
-            <span className="font-semibold">software engineering, data science, and front-end design</span>.
+            <span className="font-semibold">big data, visualization, data analysis, data science, and front-end design</span>.
           </p>
           <p className="text-lg text-gray-300 leading-relaxed">
             I love tackling real-world problems with technology, whether it’s through 
@@ -66,11 +66,11 @@ export default function About() {
             <h3 className="text-2xl font-semibold text-white">Boston University</h3>
             <p>Master of Science in Computer Science (September 2025 – Present)</p>
             <p>
-              Focusing on <span className="font-semibold">advanced algorithms, distributed systems, applied data science and object oriented programming</span>. 
-              Engaging in projects that combine modern software engineering practices with real-world 
-              problem solving, such as <span className="italic">predictive analytics, secure systems, and 
-              scalable architectures</span>. My coursework and projects are preparing me to work at the 
-              intersection of <span className="font-semibold">data-driven innovation</span> and <span className="font-semibold">software development</span>.
+              Specializing in <span className="font-semibold">advanced algorithms, distributed systems, applied data science, cloud computing, and data system architecture</span>. 
+              My projects emphasize <span className="italic">predictive analytics, secure systems, and scalable architectures</span>, 
+              preparing me to build reliable, data-driven solutions that bridge 
+              <span className="font-semibold">analytics</span> and 
+              <span className="font-semibold">software development</span>.
             </p>
           </motion.div>
 
@@ -111,13 +111,13 @@ export default function About() {
       className="bg-gray-900/60 p-6 rounded-lg shadow-lg transition-all hover:shadow-white-500/20"
     >
       <h3 className="text-2xl font-semibold text-white">
-        Front-End Developer Intern — Millicent Technologies
+        Data & Front-End Developer Intern — Millicent Technologies
       </h3>
       <p className="text-sm text-gray-400 mb-2">(2025)</p>
       <p>
-        Built responsive client-facing web applications with React/Next.js.  
-        Collaborated across teams to ship features, improve performance, and polish UI/UX.  
-        Strengthened skills in debugging, optimization, and communicating trade-offs with stakeholders.
+        Partnered with product owners to collect and analyze client requirements; helped make client websites, debug, and build interactive KPI dashboards, improving decision-making speed by 25%. 
+        Analyzed engagement and traffic metrics to deliver actionable recommendations that reduced churn and increased retention by 10%.
+        Coordinated cross-functional teams to ensure smooth delivery of client applications, maintaining 100% on-time completion rate.
       </p>
     </motion.div>
 
@@ -132,13 +132,13 @@ export default function About() {
       className="bg-gray-900/60 p-6 rounded-lg shadow-lg transition-all hover:shadow-white-500/20"
     >
       <h3 className="text-2xl font-semibold text-white">
-        Software Development Intern — InternPE
+        Data Analyst Intern — InternPE
       </h3>
       <p className="text-sm text-gray-400 mb-2">(2024)</p>
       <p>
-        Contributed to feature development and bug-fixing across the stack with a focus on clean, 
-        maintainable code. Worked with RESTful APIs and modern front-end patterns, participated in code reviews, 
-        and collaborated closely with mentors to iterate quickly and deliver reliable improvements.
+        Built automated SQL workflows and Python analytics scripts that reduced weekly reporting workload by 35%. 
+        Analyzed 50K+ records using Machine Learning basics, descriptive statistics, and validation checks to improve insight reliability. 
+        Developed Excel dashboards for operational metrics, KPI tracking, and client reports adopted by leadership. Led Data Cleaning, normalization, and schema standardization improving dataset integrity by 22%.
       </p>
     </motion.div>
 
@@ -165,29 +165,61 @@ export default function About() {
 
 
       {/* ================== Skills ================== */}
-      <section className="max-w-6xl w-full mb-40 pt-40">
-        <h2 className="text-4xl font-bold mb-10 text-center bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
-          Skills
-        </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 text-center">
-          {[
-            "React", "Next.js", "TypeScript", "Tailwind CSS",
-            "Node.js", "Express.js", "MongoDB", "REST APIs",
-            "Python", "PySpark", "Pandas", "NumPy",
-            "Data Visualization (Matplotlib/Plotly)", "SQL",
-            "Machine Learning (scikit-learn basics)",
-            "Git/GitHub", "Docker", "Postman"
-          ].map((skill, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.08 }}
-              className="bg-gray-800/60 py-4 px-3 rounded-lg shadow hover:shadow-xl"
-            >
-              {skill}
-            </motion.div>
-          ))}
-        </div>
-      </section>
+     <section className="max-w-6xl w-full mb-40 pt-40">
+  <h2 className="text-4xl font-bold mb-10 text-center bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+    Skills
+  </h2>
+
+  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 text-center">
+    {[
+      // Core Data & Analytics
+      "Data Analysis",
+      "Business Analytics",
+      "Exploratory Data Analysis (EDA)",
+      "Statistical Analysis",
+
+      // Programming & Data Tools
+      "Python",
+      "Pandas",
+      "NumPy",
+      "PySpark",
+      "SQL (Joins, CTEs, Window Functions)",
+
+      // Data Visualization & Reporting
+      "Data Visualization",
+      "Matplotlib / Seaborn",
+      "Plotly",
+      "Dashboard Design",
+      "Storytelling with Data",
+
+      // Machine Learning & Modeling
+      "Machine Learning (scikit-learn)",
+      "Regression & Classification",
+      "Feature Engineering",
+      "Model Evaluation",
+
+      // Data Systems & Engineering (light but valuable)
+      "ETL Pipelines",
+      "Big Data Processing",
+      "REST APIs",
+      "Cloud Basics (AWS/GCP concepts)",
+
+      // Tools & Collaboration
+      "Git / GitHub",
+      "Excel (Advanced)",
+      "Postman",
+      "Jupyter Notebooks"
+    ].map((skill, i) => (
+      <motion.div
+        key={i}
+        whileHover={{ scale: 1.06 }}
+        className="bg-gray-800/60 py-4 px-3 rounded-lg shadow hover:shadow-xl transition"
+      >
+        {skill}
+      </motion.div>
+    ))}
+  </div>
+</section>
 
       {/* ================== Beyond Tech ================== */}
 <section className="min-h-screen w-full py-20 text-center flex flex-col items-center justify-center">
