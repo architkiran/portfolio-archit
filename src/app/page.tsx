@@ -3,6 +3,88 @@
 import { motion } from "framer-motion"
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa"
 import Image from "next/image"
+import { useEffect, useRef } from "react"
+
+// Particle system for hero background
+function ParticleField() {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+    
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+    
+    const particles: Array<{x: number, y: number, vx: number, vy: number, size: number}> = []
+    const particleCount = 80
+    
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        size: Math.random() * 2 + 1
+      })
+    }
+    
+    function animate() {
+      if (!ctx || !canvas) return
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      
+      // Draw connections
+      ctx.strokeStyle = 'rgba(100, 255, 218, 0.1)'
+      ctx.lineWidth = 1
+      
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x
+          const dy = particles[i].y - particles[j].y
+          const dist = Math.sqrt(dx * dx + dy * dy)
+          
+          if (dist < 150) {
+            ctx.beginPath()
+            ctx.moveTo(particles[i].x, particles[i].y)
+            ctx.lineTo(particles[j].x, particles[j].y)
+            ctx.stroke()
+          }
+        }
+      }
+      
+      // Draw and update particles
+      particles.forEach(p => {
+        ctx.fillStyle = 'rgba(100, 255, 218, 0.6)'
+        ctx.beginPath()
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
+        ctx.fill()
+        
+        p.x += p.vx
+        p.y += p.vy
+        
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1
+      })
+      
+      requestAnimationFrame(animate)
+    }
+    
+    animate()
+    
+    const handleResize = () => {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+    }
+    
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+  
+  return <canvas ref={canvasRef} className="absolute inset-0 opacity-40" />
+}
 
 export default function Home() {
   return (
@@ -12,6 +94,12 @@ export default function Home() {
         id="hero"
         className="h-screen snap-start flex flex-col items-center justify-center bg-black overflow-hidden relative"
       >
+        {/* Particle Background */}
+        <ParticleField />
+        
+        {/* Grid overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(100,255,218,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(100,255,218,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
+
         {/* Aurora Background */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
@@ -44,6 +132,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
             className="text-6xl md:text-7xl font-extrabold tracking-tight bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+            style={{ fontFamily: "'Playfair Display', serif" }}
           >
             Archit Kiran Kumar
           </motion.h1>
@@ -72,7 +161,7 @@ export default function Home() {
               Contact Me
             </a>
             <a
-              href="/Resume_Archit_BU.pdf"
+              href="/Archit_resumeDA.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 rounded-lg bg-gradient-to-r from-pink-500 to-red-500 text-white font-semibold shadow-lg hover:scale-105 transform transition"
@@ -92,7 +181,7 @@ export default function Home() {
               <FaGithub />
             </a>
             <a
-              href="https://linkedin.com/in/archit-kiran-kumar-403610243"
+              href="https://linkedin.com/in/architkiran"
               target="_blank"
               className="hover:text-blue-400 transition-colors"
             >
@@ -151,6 +240,44 @@ export default function Home() {
       </p>
       <a
         href="https://github.com/architkiran/Boston-Area-Price-and-Crime-Prediction"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-block mt-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg shadow hover:scale-105 transition"
+      >
+        View Project →
+      </a>
+    </div>
+
+    {/* Project 5 */}
+    <div className="rounded-lg bg-gray-800/60 p-6 shadow-lg hover:shadow-xl transition transform hover:scale-105">
+      <h3 className="text-2xl font-semibold text-white mb-2">
+        Metric Reconciliation System
+      </h3>
+      <p className="text-gray-300 mb-4">
+        Developed an automated reconciliation system to validate and align metrics across multiple data sources. 
+        Implemented real-time monitoring and discrepancy detection to ensure data integrity and accuracy.
+      </p>
+      <a
+        href="https://github.com/architkiran/metric-reconciliation"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-block mt-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg shadow hover:scale-105 transition"
+      >
+        View Project →
+      </a>
+    </div>
+
+    {/* Project 6 */}
+    <div className="rounded-lg bg-gray-800/60 p-6 shadow-lg hover:shadow-xl transition transform hover:scale-105">
+      <h3 className="text-2xl font-semibold text-white mb-2">
+        Financial Analytics Dashboard
+      </h3>
+      <p className="text-gray-300 mb-4">
+        Built a comprehensive financial analytics platform for real-time portfolio tracking and risk assessment. 
+        Integrated machine learning models for predictive analysis and automated reporting capabilities.
+      </p>
+      <a
+        href="https://github.com/architkiran/financial-analytics"
         target="_blank"
         rel="noopener noreferrer"
         className="inline-block mt-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg shadow hover:scale-105 transition"

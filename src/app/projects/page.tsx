@@ -8,33 +8,47 @@ const projects = [
     title: "Boston-Area Price & Crime Prediction",
     description:
       "A data-driven decision support project analyzing crime rates and housing rent trends to help residents and newcomers make safer, more informed housing choices in the Boston area.",
-    link: "https://github.com/architkiran/Boston-Area-Price-and-Crime-Prediction",
+    link: "https://github.com/HarshaBeth/Boston-Area-Price-and-Crime-Prediction",
   },
   {
     id: 2,
-    title: "Music Review Rating Prediction (Kaggle, Macro-F1)",
+    title: "Financial Analytics Dashboard",
     description:
-      "Predicts reviewer ratings (1–5) of music releases using metadata and text features. A multi-class classification project evaluated using Macro F1 Score (per Kaggle rules).",
-    link: "https://github.com/architkiran/Music-Review-Rating-Prediction",
+      "Built a comprehensive financial analytics platform for real-time portfolio tracking and risk assessment. Integrated machine learning models for predictive analysis and automated reporting capabilities.",
+    link: "https://github.com/architkiran/financial-analytics",
   },
   {
     id: 3,
+    title: "Metric Reconciliation System",
+    description:
+      "Developed an automated reconciliation system to validate and align metrics across multiple data sources. Implemented real-time monitoring and discrepancy detection to ensure data integrity and accuracy.",
+    link: "https://github.com/architkiran/Metric-reconciliation-dashboard-debugging",
+  },
+  {
+    id: 4,
+    title: "Music Review Rating Prediction (Kaggle, Macro-F1)",
+    description:
+      "Predicts reviewer ratings (1–5) of music releases using metadata and text features. A multi-class classification project evaluated using Macro F1 Score (per Kaggle rules).",
+    link: "https://github.com/architkiran/MusicRatingPrediction",
+  },
+  {
+    id: 5,
     title: "Traffic Data Analysis (PySpark, Big Data)",
     description:
       "Built a PySpark-based big data pipeline to analyze and visualize urban traffic patterns, generating insights and predictive trends to support data-driven transportation planning.",
-    link: "https://github.com/architkk/traffic-analysis",
+    link: "https://github.com/architkiran/Live-Traffic-Data-Analysis",
   },
 
   // Tier 2: Systems with Data Impact
   {
-    id: 4,
+    id: 6,
     title: "EV Charging Network Resilience (OCPP Security + Infrastructure Analytics)",
     description:
       "Research-backed project strengthening India&apos;s EV charging infrastructure by analyzing OCPP protocol vulnerabilities and proposing resilient, secure frameworks for real-world deployment.",
     link: "https://github.com/architkiran/Safeguarding-Bharat-s-EV-Charging-Networks-Through-OCPP-Protocol-Resilience-",
   },
   {
-    id: 5,
+    id: 7,
     title: "Blockchain-based E-Voting System",
     description:
       "Engineered a secure, transparent, and tamper-resistant e-voting system using blockchain to support integrity, auditability, and trust in digital election processes.",
@@ -43,21 +57,21 @@ const projects = [
 
   // Tier 3: Engineering Proof
   {
-    id: 6,
+    id: 8,
     title: "Post-Quantum IoT Framework",
     description:
       "Designed a secure IoT communication framework resilient to quantum-era attacks by integrating post-quantum cryptography while optimizing performance for resource-constrained devices.",
     link: "https://github.com/architkiran/Post-Quantum-Communication-framework-for-IOT-Devices",
   },
   {
-    id: 7,
+    id: 9,
     title: "Portfolio Website (This Site)",
     description:
       "Built with Next.js, Tailwind CSS, and Framer Motion to showcase analytics-focused projects and experience with a clean UI, smooth interactions, and polished presentation.",
-    link: "https://github.com/architkiran/portfolio",
+    link: "https://github.com/architkiran/portfolio-archit",
   },
   {
-    id: 8,
+    id: 10,
     title: "MERN Stack Projects (Car Rental & Railway Management)",
     description:
       "Developed full-stack systems to manage bookings and workflows, focusing on data modeling, CRUD operations, and clean user flows using MongoDB, Express, React, and Node.js.",
