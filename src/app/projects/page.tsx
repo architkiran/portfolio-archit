@@ -1,126 +1,62 @@
 "use client"
+
 import { motion } from "framer-motion"
+import { projects } from "@/data/content"
+import { ProjectCard } from "@/components/Projects"
 
-const projects = [
-  // Tier 1: Data & Business Analytics
-  {
-    id: 1,
-    title: "Boston-Area Price & Crime Prediction",
-    description:
-      "A data-driven decision support project analyzing crime rates and housing rent trends to help residents and newcomers make safer, more informed housing choices in the Boston area.",
-    link: "https://github.com/HarshaBeth/Boston-Area-Price-and-Crime-Prediction",
-  },
-  {
-    id: 2,
-    title: "Financial Analytics Dashboard",
-    description:
-      "Built a comprehensive financial analytics platform for real-time portfolio tracking and risk assessment. Integrated machine learning models for predictive analysis and automated reporting capabilities.",
-    link: "https://github.com/architkiran/financial-analytics",
-  },
-  {
-    id: 3,
-    title: "Metric Reconciliation System",
-    description:
-      "Developed an automated reconciliation system to validate and align metrics across multiple data sources. Implemented real-time monitoring and discrepancy detection to ensure data integrity and accuracy.",
-    link: "https://github.com/architkiran/Metric-reconciliation-dashboard-debugging",
-  },
-  {
-    id: 4,
-    title: "Music Review Rating Prediction (Kaggle, Macro-F1)",
-    description:
-      "Predicts reviewer ratings (1–5) of music releases using metadata and text features. A multi-class classification project evaluated using Macro F1 Score (per Kaggle rules).",
-    link: "https://github.com/architkiran/MusicRatingPrediction",
-  },
-  {
-    id: 5,
-    title: "Traffic Data Analysis (PySpark, Big Data)",
-    description:
-      "Built a PySpark-based big data pipeline to analyze and visualize urban traffic patterns, generating insights and predictive trends to support data-driven transportation planning.",
-    link: "https://github.com/architkiran/Live-Traffic-Data-Analysis",
-  },
+export default function ProjectsPage() {
+  const featured = projects.filter((p) => p.featured)
+  const rest = projects.filter((p) => !p.featured)
 
-  // Tier 2: Systems with Data Impact
-  {
-    id: 6,
-    title: "EV Charging Network Resilience (OCPP Security + Infrastructure Analytics)",
-    description:
-      "Research-backed project strengthening India&apos;s EV charging infrastructure by analyzing OCPP protocol vulnerabilities and proposing resilient, secure frameworks for real-world deployment.",
-    link: "https://github.com/architkiran/Safeguarding-Bharat-s-EV-Charging-Networks-Through-OCPP-Protocol-Resilience-",
-  },
-  {
-    id: 7,
-    title: "Blockchain-based E-Voting System",
-    description:
-      "Engineered a secure, transparent, and tamper-resistant e-voting system using blockchain to support integrity, auditability, and trust in digital election processes.",
-    link: "https://github.com/architkiran/Blockchain-Based-Voting-",
-  },
-
-  // Tier 3: Engineering Proof
-  {
-    id: 8,
-    title: "Post-Quantum IoT Framework",
-    description:
-      "Designed a secure IoT communication framework resilient to quantum-era attacks by integrating post-quantum cryptography while optimizing performance for resource-constrained devices.",
-    link: "https://github.com/architkiran/Post-Quantum-Communication-framework-for-IOT-Devices",
-  },
-  {
-    id: 9,
-    title: "Portfolio Website (This Site)",
-    description:
-      "Built with Next.js, Tailwind CSS, and Framer Motion to showcase analytics-focused projects and experience with a clean UI, smooth interactions, and polished presentation.",
-    link: "https://github.com/architkiran/portfolio-archit",
-  },
-  {
-    id: 10,
-    title: "MERN Stack Projects (Car Rental & Railway Management)",
-    description:
-      "Developed full-stack systems to manage bookings and workflows, focusing on data modeling, CRUD operations, and clean user flows using MongoDB, Express, React, and Node.js.",
-    link: "https://github.com/architkiran/Car-Rental-System",
-  },
-]
-
-export default function Projects() {
   return (
-    <main className="min-h-screen bg-black text-white px-6 py-20">
-      {/* Hero Section */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-center mb-16"
-      >
-        <h1 className="text-6xl font-extrabold bg-gradient-to-r from-purple-400 via-blue-400 to-pink-400 bg-clip-text text-transparent">
+    <main className="min-h-screen bg-cream pt-28 pb-24">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Header */}
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-[11px] tracking-[0.18em] text-accent uppercase font-medium mb-4"
+        >
+          All Work
+        </motion.p>
+        <motion.h1
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+          className="font-serif text-5xl md:text-7xl font-light text-ink mb-5"
+        >
           Projects
-        </h1>
-        <p className="mt-4 text-gray-400 max-w-2xl mx-auto text-lg">
-          A collection of my most impactful work across data analysis, predictive modeling,
-          big data pipelines, and secure systems.
-        </p>
-      </motion.div>
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.25 }}
+          className="text-ink-muted text-base max-w-xl mb-16 leading-relaxed"
+        >
+          A full collection of work spanning financial analytics, data pipelines, machine learning,
+          and secure systems engineering.
+        </motion.p>
 
-      {/* Projects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
-        {projects.map((p, index) => (
-          <motion.a
-            key={p.id}
-            href={p.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.08 }}
-            viewport={{ once: true }}
-            className="group relative p-8 rounded-2xl bg-gray-900/60 backdrop-blur-md border border-gray-700 hover:border-purple-500 hover:shadow-[0_0_20px_rgba(168,85,247,0.5)] transition-all duration-300"
-          >
-            <h3 className="text-2xl font-semibold text-white group-hover:text-purple-400 transition-colors">
-              {p.title}
-            </h3>
-            <p className="text-gray-400 mt-3 leading-relaxed">{p.description}</p>
-            <span className="mt-5 inline-block px-5 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium shadow-md group-hover:scale-105 transform transition">
-              View Project →
-            </span>
-          </motion.a>
-        ))}
+        {/* Featured */}
+        <p className="text-[11px] tracking-[0.18em] text-ink-muted uppercase font-medium mb-5 pb-3 border-b border-border">
+          Featured
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-14">
+          {featured.map((p) => (
+            <ProjectCard key={p.id} project={p} featured />
+          ))}
+        </div>
+
+        {/* All others */}
+        <p className="text-[11px] tracking-[0.18em] text-ink-muted uppercase font-medium mb-5 pb-3 border-b border-border">
+          All Projects
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {rest.map((p) => (
+            <ProjectCard key={p.id} project={p} />
+          ))}
+        </div>
       </div>
     </main>
   )

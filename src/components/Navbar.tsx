@@ -1,118 +1,136 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
-import { motion } from "framer-motion"
-import { FaBars, FaTimes, FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa"
+import { usePathname } from "next/navigation"
+import { motion, AnimatePresence } from "framer-motion"
 
-export default function NavBar() {
-  const [open, setOpen] = useState(false)
-  const [hidden, setHidden] = useState(false)
-  const lastScrollY = useRef(0)
+const navLinks = [
+  { label: "About", href: "/about" },
+  { label: "Projects", href: "/projects" },
+  { label: "Experience", href: "/experience" },
+  { label: "Achievements", href: "/achievements" },
+  { label: "Contact", href: "/contact" },
+]
+
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const pathname = usePathname()
+  const isHome = pathname === "/"
 
   useEffect(() => {
-    const scrollContainer = document.querySelector("main")
-    if (!scrollContainer) return
-
-    const handleScroll = () => {
-      const currentY = (scrollContainer as HTMLElement).scrollTop
-
-      if (currentY > lastScrollY.current && currentY > 50) {
-        setHidden(true) // hide when scrolling down
-      } else {
-        setHidden(false) // show when scrolling up
-      }
-
-      lastScrollY.current = currentY
-    }
-
-    scrollContainer.addEventListener("scroll", handleScroll, { passive: true })
-    return () => scrollContainer.removeEventListener("scroll", handleScroll)
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
-  const links = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Projects", href: "/projects" },
-    { name: "Achievements", href: "/achievements" },
-    { name: "Contact", href: "/contact" },
-  ]
+  // Close mobile menu on route change
+  useEffect(() => setMenuOpen(false), [pathname])
 
   return (
     <>
-      <motion.nav
-        initial={{ y: 0 }}
-        animate={{ y: hidden ? -100 : 0 }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="fixed top-0 left-0 w-full z-50 bg-black/40 backdrop-blur-lg border-b border-white/10 shadow-lg"
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled || !isHome
+            ? "bg-cream/90 backdrop-blur-md border-b border-border shadow-sm"
+            : "bg-transparent"
+        }`}
       >
-        <div className="max-w-6xl mx-auto flex items-center justify-center py-4 px-6">
-          {/* Logo on far left */}
-          <div className="absolute left-6 text-white text-xl font-bold">Archit</div>
+        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+          {/* Logo */}
+          <Link
+            href="/"
+            className="font-serif text-2xl font-semibold text-accent tracking-tight"
+          >
+            AK
+          </Link>
 
-          {/* Desktop Links */}
-          <div className="hidden md:flex gap-10">
-            {links.map((link) => (
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
               <Link
-                key={link.name}
+                key={link.href}
                 href={link.href}
-                className="relative text-gray-300 hover:text-white transition group"
+                className={`relative text-sm font-medium transition-colors group ${
+                  pathname === link.href ? "text-ink" : "text-ink-muted hover:text-ink"
+                }`}
               >
-                {link.name}
-                <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-300 group-hover:w-full" />
+                {link.label}
+                <span
+                  className={`absolute -bottom-0.5 left-0 h-px bg-accent transition-all duration-300 ${
+                    pathname === link.href ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
+                />
               </Link>
             ))}
-          </div>
+            <a
+              href="/Archit_Kiran_Kumar_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium border border-ink/30 text-ink px-4 py-1.5 rounded hover:border-accent hover:text-accent transition-colors"
+            >
+              Resume
+            </a>
+          </nav>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden absolute right-6">
-            <button onClick={() => setOpen(!open)} className="text-gray-200 text-2xl">
-              {open ? <FaTimes /> : <FaBars />}
-            </button>
-          </div>
-        </div>
-      </motion.nav>
-
-      {/* Mobile Menu Overlay */}
-      {open && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-40 bg-black/90 backdrop-blur-xl flex flex-col items-center justify-center"
-        >
+          {/* Mobile hamburger */}
           <button
-            onClick={() => setOpen(false)}
-            className="absolute top-6 right-6 text-gray-300 text-3xl hover:text-white"
+            className="md:hidden flex flex-col gap-1.5 p-1"
+            onClick={() => setMenuOpen((o) => !o)}
+            aria-label="Toggle menu"
           >
-            <FaTimes />
+            <motion.span
+              className="block h-px w-6 bg-ink origin-center"
+              animate={menuOpen ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.2 }}
+            />
+            <motion.span
+              className="block h-px w-6 bg-ink"
+              animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
+              transition={{ duration: 0.2 }}
+            />
+            <motion.span
+              className="block h-px w-6 bg-ink origin-center"
+              animate={menuOpen ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.2 }}
+            />
           </button>
-          <ul className="flex flex-col gap-8 text-center">
-            {links.map((link) => (
-              <li key={link.name}>
-                <Link
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="text-2xl text-gray-200 hover:text-white transition"
-                >
-                  {link.name}
-                </Link>
-              </li>
+        </div>
+      </header>
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.2 }}
+            className="fixed top-16 left-0 right-0 z-40 bg-cream/97 backdrop-blur-md border-b border-border px-6 py-6 flex flex-col gap-5 md:hidden"
+          >
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-left text-lg font-medium transition-colors ${
+                  pathname === link.href ? "text-accent" : "text-ink-muted hover:text-ink"
+                }`}
+              >
+                {link.label}
+              </Link>
             ))}
-          </ul>
-          <div className="flex gap-6 mt-12 text-3xl text-gray-400">
-            <a href="https://linkedin.com/in/yourlinkedin" target="_blank" className="hover:text-blue-400">
-              <FaLinkedin />
+            <a
+              href="/Archit_Kiran_Kumar_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-fit text-sm font-medium border border-ink/30 text-ink px-4 py-2 rounded hover:border-accent hover:text-accent transition-colors"
+            >
+              Resume
             </a>
-            <a href="https://instagram.com/yourinstagram" target="_blank" className="hover:text-pink-500">
-              <FaInstagram />
-            </a>
-            <a href="mailto:youremail@example.com" className="hover:text-red-400">
-              <FaEnvelope />
-            </a>
-          </div>
-        </motion.div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   )
 }
