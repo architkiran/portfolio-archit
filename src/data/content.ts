@@ -30,24 +30,33 @@ export interface SkillGroup {
 export const projects: Project[] = [
   {
     id: 1,
+    title: "Payments & Interchange Economics – Margin Leakage Investigation",
+    description:
+      "Identified $141K in annual margin leakage across a $130M payments portfolio by modeling interchange spreads across 220 merchants, card networks, and MCC tiers in PostgreSQL, and proposed a segment-level repricing strategy visualized in a 3-page Power BI dashboard.",
+    tags: ["PostgreSQL", "Power BI", "Payments", "Financial Analytics", "Pricing Strategy"],
+    github: "https://github.com/architkiran",
+    featured: true,
+  },
+  {
+    id: 2,
     title: "Position Break Intelligence System",
     description:
-      "Designed a reconciliation pipeline detecting position breaks across PMS and Custodian feeds, classifying 1,560 position-days by severity and surfacing $8.1M in exposure through a 3-page Power BI dashboard.",
+      "Surfaced $8.1M in unreconciled exposure by analyzing PMS and Custodian feeds, classifying 1,560 position-days by severity, and delivering findings through a 3-page Power BI dashboard.",
     tags: ["Python", "SQL", "Power BI", "Fintech", "Reconciliation"],
     github: "https://github.com/architkiran/Position-break-intelligence",
     featured: true,
   },
   {
-    id: 2,
+    id: 3,
     title: "Corporate Financial Intelligence Dashboard",
     description:
-      "Automated financial data ingestion for 30+ public companies via Python APIs, computed 10+ KPIs (P/E, ROE, margins), and built interactive Plotly visualizations for executive-level trend analysis.",
+      "Automated financial data collection for 30+ public companies via Python APIs, computed 10+ KPIs (P/E, ROE, margins), and built interactive Plotly visualizations for executive-level trend analysis.",
     tags: ["Python", "Plotly", "APIs", "Financial Analytics", "KPI"],
     github: "https://github.com/architkiran/financial-performance-dashboard",
     featured: true,
   },
   {
-    id: 3,
+    id: 4,
     title: "Manufacturing Quality Analytics Dashboard",
     description:
       "Cleaned a 100K-row manufacturing dataset through an 8-step Python pipeline; identified a 9.7pp machine defect spread and built a 3-page Power BI dashboard with DAX measures tracking OEE, scrap cost, and maintenance signals.",
@@ -55,7 +64,7 @@ export const projects: Project[] = [
     github: "https://github.com/architkiran/Manufacturing-analytics",
   },
   {
-    id: 4,
+    id: 5,
     title: "Live Traffic Data Analytics (PySpark)",
     description:
       "Engineered distributed PySpark and SQL pipelines processing 2M+ real-time traffic records, performing EDA and anomaly detection to uncover congestion patterns and improve route efficiency by 18%.",
@@ -63,7 +72,7 @@ export const projects: Project[] = [
     github: "https://github.com/architkiran/Live-Traffic-Data-Analysis",
   },
   {
-    id: 5,
+    id: 6,
     title: "Metric Reconciliation & Debugging Dashboard",
     description:
       "Designed a self-serve debugging tool for analysts to reconcile metric discrepancies across data pipelines. Reduced average debug time and improved data quality across reporting workflows.",
@@ -72,7 +81,7 @@ export const projects: Project[] = [
   },
   // Additional projects — shown only on /projects page
   {
-    id: 6,
+    id: 7,
     title: "Boston-Area Price & Crime Prediction",
     description:
       "A data-driven decision support project analyzing crime rates and housing rent trends to help newcomers and residents make safer, more informed choices in the Boston metro area.",
@@ -80,7 +89,7 @@ export const projects: Project[] = [
     github: "https://github.com/HarshaBeth/Boston-Area-Price-and-Crime-Prediction",
   },
   {
-    id: 7,
+    id: 8,
     title: "Music Review Rating Prediction",
     description:
       "Predicts reviewer ratings (1–5) of music releases using metadata and text features. Multi-class classification project evaluated with Macro F1 Score on Kaggle.",
@@ -88,7 +97,7 @@ export const projects: Project[] = [
     github: "https://github.com/architkiran/MusicRatingPrediction",
   },
   {
-    id: 8,
+    id: 9,
     title: "EV Charging Network Resilience",
     description:
       "Research-backed project strengthening India's EV charging infrastructure by analyzing OCPP protocol vulnerabilities and proposing resilient, secure deployment frameworks.",
@@ -96,7 +105,7 @@ export const projects: Project[] = [
     github: "https://github.com/architkiran/Safeguarding-Bharat-s-EV-Charging-Networks-Through-OCPP-Protocol-Resilience-",
   },
   {
-    id: 9,
+    id: 10,
     title: "Blockchain-based E-Voting System",
     description:
       "Engineered a secure, transparent, and tamper-resistant e-voting system using blockchain to support integrity, auditability, and public trust in digital elections.",
@@ -104,7 +113,7 @@ export const projects: Project[] = [
     github: "https://github.com/architkiran/Blockchain-Based-Voting-",
   },
   {
-    id: 10,
+    id: 11,
     title: "Post-Quantum IoT Framework",
     description:
       "Designed a secure IoT communication framework resilient to quantum-era attacks by integrating post-quantum cryptography while optimizing for resource-constrained devices.",
@@ -116,31 +125,22 @@ export const projects: Project[] = [
 export const experience: Experience[] = [
   {
     company: "Millicent Technologies",
-    role: "Data & Front-End Intern",
+    role: "Data Analyst Intern",
     period: "Mar 2025 – Jul 2025",
     bullets: [
-      "Built automated ETL pipelines processing 100K+ records daily using SQL and Python, reducing reporting delays by 30% and enabling same-day data availability for 3 business units",
-      "Designed 8 Tableau/Excel dashboards tracking data quality, customer engagement, and operational KPIs for 1,200+ users, adopted as the primary reporting tool by product and operations teams",
-      "Led requirements gathering with 5 cross-functional stakeholders to standardize 20+ KPI definitions and implement data governance rules, eliminating reporting inconsistencies across 3 business units",
+      "Cut reporting turnaround time by 30%, enabling same-day data availability across 3 business units, by diagnosing recurring delays in 100K+ daily records and redesigning the workflow with engineering and operations leads",
+      "Became the team's default reporting tool by building 8 Tableau and Excel dashboards adopted across 1,200+ users, consolidating scattered KPI requests into a single source of truth for data quality and engagement tracking",
+      "Eliminated reporting inconsistencies across 3 business units by leading requirements-gathering sessions with 5 cross-functional stakeholders to align conflicting KPI definitions into a single governance standard",
     ],
   },
   {
     company: "InternPe",
-    role: "Data Analyst Intern",
+    role: "Analyst Intern",
     period: "Apr 2024 – Sep 2024",
     bullets: [
-      "Wrote 25+ SQL queries and Python scripts to extract, transform, and load 200K+ records, performing EDA, statistical analysis, and anomaly detection to improve data accuracy by 25%",
-      "Built 10+ Power BI reports and Excel dashboards for ad-hoc and scheduled reporting on revenue, churn, and operational KPIs — adopted by senior leadership as the primary decision-making tool",
-      "Executed data cleaning, schema alignment, and validation rules across 8 database tables, improving dataset integrity and reporting consistency by 40%",
-    ],
-  },
-  {
-    company: "AICTE",
-    role: "Hackathon Lead & Volunteer",
-    period: "2022 – 2023",
-    bullets: [
-      "Delivered an end-to-end data analytics solution within a 24-hour hackathon sprint",
-      "Volunteered across AICTE programs reaching 500+ learners, spreading CS awareness and sustainability initiatives",
+      "Built a SQL and Python extraction and validation layer for 200K+ records, applying outlier detection to flag mismatched entries and improve data accuracy by 25%",
+      "Replaced manual spreadsheet reporting with 10+ Power BI and Excel reports on revenue, churn, and operational KPIs, becoming the team's standing reference and regularly presented to senior stakeholders",
+      "Standardized schema and validation rules across 8 database tables, working closely with the data team to reduce downstream reporting errors by 40%",
     ],
   },
 ]
