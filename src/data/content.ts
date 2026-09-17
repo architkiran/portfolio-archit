@@ -32,7 +32,7 @@ export const projects: Project[] = [
     id: 1,
     title: "Payments & Interchange Economics – Margin Leakage Investigation",
     description:
-      "Identified $141K in annual margin leakage across a $130M payments portfolio by modeling interchange spreads across 220 merchants, card networks, and MCC tiers in PostgreSQL, and proposed a segment-level repricing strategy visualized in a 3-page Power BI dashboard.",
+      "Identified $141K in annual margin leakage across a $130M payments portfolio by statistically modeling interchange spreads across 220 merchants, card networks, and MCC tiers in PostgreSQL, and proposed a segment-level repricing strategy visualized in a 3-page Power BI dashboard.",
     tags: ["PostgreSQL", "Power BI", "Payments", "Financial Analytics", "Pricing Strategy"],
     github: "https://github.com/architkiran",
     featured: true,
@@ -41,7 +41,7 @@ export const projects: Project[] = [
     id: 2,
     title: "Position Break Intelligence System",
     description:
-      "Surfaced $8.1M in unreconciled exposure by analyzing PMS and Custodian feeds, classifying 1,560 position-days by severity, and delivering findings through a 3-page Power BI dashboard.",
+      "Surfaced $8.1M in unreconciled exposure by validating and analyzing PMS and Custodian feeds, classifying 1,560 position-days by severity, and delivering findings through a 3-page Power BI dashboard.",
     tags: ["Python", "SQL", "Power BI", "Fintech", "Reconciliation"],
     github: "https://github.com/architkiran/Position-break-intelligence",
     featured: true,
@@ -124,11 +124,21 @@ export const projects: Project[] = [
 
 export const experience: Experience[] = [
   {
+    company: "BU Spark",
+    role: "Data Analyst",
+    period: "Jan 2026 – May 2026",
+    bullets: [
+      "Conducted root-cause error analysis across a 200-query validation dataset to identify intent misclassifications, redesigning semantic detection logic to optimize chatbot query routing",
+      "Engineered an automated Pandas data transformation workflow to validate accuracy in 5,000+ support tickets, reducing input noise by 30% and cutting downstream compute costs by 40%",
+      "Modeled resolution bottlenecks across ~5,000 records in SQL/Pandas and built interactive Power BI dashboards and performance metrics, partnering with stakeholders to communicate insights and drive resource allocation",
+    ],
+  },
+  {
     company: "Millicent Technologies",
     role: "Data Analyst Intern",
-    period: "Mar 2025 – Jul 2025",
+    period: "Jan 2025 – Jul 2025",
     bullets: [
-      "Cut reporting turnaround time by 30%, enabling same-day data availability across 3 business units, by diagnosing recurring delays in 100K+ daily records and redesigning the workflow with engineering and operations leads",
+      "Reduced reporting turnaround time by 30%, enabling same-day data availability across 3 business units, by diagnosing recurring delays in 100K+ daily records and redesigning the workflow with engineering and operations leads",
       "Became the team's default reporting tool by building 8 Tableau and Excel dashboards adopted across 1,200+ users, consolidating scattered KPI requests into a single source of truth for data quality and engagement tracking",
       "Eliminated reporting inconsistencies across 3 business units by leading requirements-gathering sessions with 5 cross-functional stakeholders to align conflicting KPI definitions into a single governance standard",
     ],
@@ -149,7 +159,7 @@ export const education: Education[] = [
   {
     school: "Boston University",
     degree: "Master of Science, Computer Science",
-    period: "Sep 2025 – Jan 2027 (Expected)",
+    period: "Sep 2025 – Dec 2026 (Expected)",
     description:
       "Specializing in advanced algorithms, distributed systems, applied data science, and cloud computing. Projects emphasize predictive analytics, secure systems, and scalable architectures.",
   },
@@ -165,23 +175,23 @@ export const education: Education[] = [
 export const skillGroups: SkillGroup[] = [
   {
     category: "Analytics & Data",
-    skills: ["SQL", "Python", "Pandas", "NumPy", "R", "PySpark", "EDA", "A/B Testing", "Hypothesis Testing"],
+    skills: ["SQL", "Python", "Pandas", "NumPy", "R", "Excel", "PySpark", "Statistical Analysis", "EDA", "A/B Testing", "Hypothesis Testing", "Predictive Analytics", "Forecasting"],
   },
   {
     category: "Databases & Cloud",
-    skills: ["PostgreSQL", "MySQL", "DuckDB", "BigQuery", "Snowflake", "Redshift", "AWS", "GCP"],
+    skills: ["PostgreSQL", "MySQL", "DuckDB", "BigQuery", "Snowflake", "Redshift", "Databricks", "AWS", "GCP"],
   },
   {
     category: "Visualization & BI",
-    skills: ["Tableau", "Power BI", "Plotly", "Streamlit", "Dashboard Design", "Reporting Automation"],
+    skills: ["Power BI", "Tableau", "DAX", "Looker", "Plotly", "Streamlit", "Dashboard Development", "Reporting Automation"],
   },
   {
     category: "Data Engineering",
-    skills: ["ETL/ELT Pipelines", "Data Validation", "Data Modeling", "Data Warehousing"],
+    skills: ["ETL/ELT Pipelines", "Data Validation", "Data Reconciliation", "Data Modeling", "Data Warehousing"],
   },
   {
     category: "Tools & Methods",
-    skills: ["Git", "Jira", "Agile", "Scikit-learn", "Regression", "Classification", "Feature Engineering"],
+    skills: ["Git", "Jira", "REST APIs", "Agile", "Scikit-learn", "Regression", "Classification", "Feature Engineering", "Technical Documentation", "Data Storytelling"],
   },
 ]
 

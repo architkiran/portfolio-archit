@@ -45,7 +45,7 @@ export default function About() {
             {/* Availability badge */}
             <div className="inline-flex items-center gap-2 border border-accent/30 bg-accent-light/50 text-accent rounded-full px-4 py-1.5 text-xs font-medium">
               <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-              Data Analytics Internships · Summer 2026
+              Open to Data Analyst Roles · 2026
             </div>
           </motion.div>
 
@@ -63,7 +63,7 @@ export default function About() {
             <div className="space-y-4 text-ink-muted leading-relaxed text-base md:text-lg">
               <p>
                 I&apos;m an international student from India pursuing my Master&apos;s in Computer
-                Science at Boston University (Class of 2027), with a deep focus on data analytics
+                Science at Boston University (Class of 2026), with a deep focus on data analytics
                 and fintech — where numbers tell stories and dashboards drive decisions.
               </p>
               <p>
@@ -72,9 +72,10 @@ export default function About() {
                 building tools that are not just accurate, but intuitive and clear.
               </p>
               <p>
-                Previously interned at Millicent Technologies and InternPe, where I built financial
-                dashboards, automated reconciliation pipelines, and brought structure to messy
-                data problems that real teams depended on every day.
+                Most recently a Data Analyst at BU Spark, and previously an intern at Millicent
+                Technologies and InternPe, where I built financial dashboards, automated
+                reconciliation pipelines, and brought structure to messy data problems that
+                real teams depended on every day.
               </p>
             </div>
           </motion.div>
