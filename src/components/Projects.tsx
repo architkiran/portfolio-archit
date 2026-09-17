@@ -1,8 +1,17 @@
 "use client"
 
+import { useEffect, useRef } from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useGSAP } from "@gsap/react"
 import { projects, type Project } from "@/data/content"
+import { EASE } from "@/lib/motion"
+import { RevealText, FadeUp } from "./motion/Reveal"
+import { useIntro } from "./motion/IntroProvider"
+
+gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 const GITHUB_ICON = (
   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -10,13 +19,14 @@ const GITHUB_ICON = (
   </svg>
 )
 
+// Shared with /projects page — grid card
 export function ProjectCard({ project, featured = false }: { project: Project; featured?: boolean }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-30px" }}
-      transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+      transition={{ duration: 0.8, ease: EASE }}
       className={`group relative bg-card border border-border rounded-lg flex flex-col
         hover:-translate-y-1 hover:shadow-md transition-all duration-300
         hover:border-l-[3px] hover:border-l-accent
@@ -27,29 +37,20 @@ export function ProjectCard({ project, featured = false }: { project: Project; f
           Featured
         </span>
       )}
-
       <h3
         className={`font-serif text-ink leading-snug mb-3 group-hover:text-accent transition-colors duration-200
           ${featured ? "text-2xl md:text-[1.6rem]" : "text-xl"}`}
       >
         {project.title}
       </h3>
-
-      <p className="text-ink-muted text-sm leading-relaxed flex-1 mb-5">
-        {project.description}
-      </p>
-
+      <p className="text-ink-muted text-sm leading-relaxed flex-1 mb-5">{project.description}</p>
       <div className="flex flex-wrap gap-2 mb-5">
         {project.tags.map((tag) => (
-          <span
-            key={tag}
-            className="text-[11px] border border-border text-ink-muted px-2.5 py-1 rounded-full"
-          >
+          <span key={tag} className="text-[11px] border border-border text-ink-muted px-2.5 py-1 rounded-full">
             {tag}
           </span>
         ))}
       </div>
-
       <a
         href={project.github}
         target="_blank"
@@ -63,68 +64,137 @@ export function ProjectCard({ project, featured = false }: { project: Project; f
   )
 }
 
-// Home page — top 5 only
+// Home-page panel — large, numbered, opens GitHub on click
+function Panel({ project, index }: { project: Project; index: number }) {
+  return (
+    <a
+      href={project.github}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-cursor="view"
+      className="group relative flex flex-col justify-between shrink-0 w-full lg:w-[min(560px,42vw)] lg:min-h-[62vh] min-h-[420px] p-8 md:p-10 bg-card border border-border rounded-lg overflow-hidden transition-colors duration-500 hover:border-accent/50"
+    >
+      <span
+        aria-hidden
+        className="absolute inset-0 bg-accent-light/40 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)]"
+      />
+      <div className="relative">
+        <div className="flex items-center justify-between mb-8">
+          <span className="font-serif text-4xl text-ink-muted/60 font-light tabular-nums">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          {project.featured && (
+            <span className="text-[10px] tracking-[0.18em] text-accent uppercase font-medium">Featured</span>
+          )}
+        </div>
+        <h3 className="font-serif text-3xl md:text-[2.2rem] font-normal text-ink leading-[1.15] mb-5 group-hover:text-accent transition-colors duration-300">
+          {project.title}
+        </h3>
+        <p className="text-ink-muted text-sm md:text-[15px] leading-relaxed lg:line-clamp-4">{project.description}</p>
+      </div>
+      {project.metric && (
+        <div className="relative my-8">
+          <p className="font-serif text-[clamp(3rem,5vw,4.5rem)] font-light leading-none text-ink tracking-tight">
+            {project.metric.value}
+          </p>
+          <p className="text-[11px] tracking-[0.18em] uppercase text-ink-muted mt-2">{project.metric.label}</p>
+        </div>
+      )}
+      <div className="relative flex items-end justify-between gap-4">
+        <div className="flex flex-wrap gap-2">
+          {project.tags.slice(0, 4).map((tag) => (
+            <span key={tag} className="text-[11px] border border-border text-ink-muted px-2.5 py-1 rounded-full bg-cream/60">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <span className="text-ink-muted group-hover:text-accent transition-colors shrink-0">{GITHUB_ICON}</span>
+      </div>
+    </a>
+  )
+}
+
 export default function Projects() {
-  const featured = projects.filter((p) => p.featured)
-  const topRegular = projects.filter((p) => !p.featured).slice(0, 3)
+  const { ready } = useIntro()
+  const sectionRef = useRef<HTMLElement>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
+  const shown = [...projects.filter((p) => p.featured), ...projects.filter((p) => !p.featured).slice(0, 2)]
+
+  // Desktop only: pin the section and translate the track horizontally as the
+  // user scrolls. Mobile and reduced-motion get a plain vertical stack.
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia()
+      mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
+        const track = trackRef.current
+        const section = sectionRef.current
+        if (!track || !section) return
+        const distance = () => track.scrollWidth - section.clientWidth
+        gsap.to(track, {
+          x: () => -distance(),
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: () => `+=${distance()}`,
+            pin: true,
+            scrub: 0.8,
+            invalidateOnRefresh: true,
+            anticipatePin: 1,
+          },
+        })
+      })
+    },
+    { scope: sectionRef }
+  )
+
+  // Layout shifts once the preloader lifts and fonts settle — re-measure
+  useEffect(() => {
+    if (ready) ScrollTrigger.refresh()
+  }, [ready])
 
   return (
-    <section id="projects" className="py-28 bg-cream">
-      <div className="max-w-6xl mx-auto px-6">
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-[11px] tracking-[0.18em] text-accent uppercase font-medium mb-4"
-        >
-          Work
-        </motion.p>
-        <div className="flex items-end justify-between mb-14">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-serif text-5xl md:text-6xl font-light text-ink"
-          >
-            Selected Projects
-          </motion.h2>
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <Link
-              href="/projects"
-              className="text-sm font-medium text-ink-muted hover:text-accent transition-colors hidden md:flex items-center gap-1.5 group"
-            >
-              View all 10
-              <span className="transition-transform group-hover:translate-x-0.5">→</span>
+    <section ref={sectionRef} id="projects" className="relative bg-cream overflow-hidden lg:h-screen py-28 lg:py-0 lg:flex lg:items-center">
+      <div ref={trackRef} className="flex flex-col lg:flex-row gap-6 lg:gap-8 px-6 md:px-12 lg:pl-[max(3rem,calc((100vw-72rem)/2+3rem))] lg:pr-[12vw] w-full lg:w-max">
+        {/* Intro panel */}
+        <div className="shrink-0 lg:w-[38vw] flex flex-col justify-between lg:min-h-[62vh] mb-6 lg:mb-0">
+          <div>
+            <FadeUp>
+              <p className="text-[11px] tracking-[0.2em] text-accent uppercase font-medium mb-6">Work</p>
+            </FadeUp>
+            <RevealText
+              as="h2"
+              text="Selected Projects"
+              className="font-serif text-6xl md:text-7xl lg:text-[5.5rem] font-light text-ink leading-[0.95] max-w-[6ch]"
+            />
+          </div>
+          <FadeUp delay={0.2} className="mt-10 lg:mt-0">
+            <p className="text-ink-muted text-base leading-relaxed max-w-xs mb-6">
+              Payments economics, position reconciliation, and financial intelligence — analysis built to be used.
+            </p>
+            <Link href="/projects" className="group inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-accent transition-colors">
+              View all {projects.length}
+              <span className="transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-x-1">→</span>
             </Link>
-          </motion.div>
+            <p className="hidden lg:block mt-10 text-[10px] tracking-[0.2em] uppercase text-ink-muted">Scroll to explore →</p>
+          </FadeUp>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
-          {featured.map((p) => (
-            <ProjectCard key={p.id} project={p} featured />
-          ))}
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
-          {topRegular.map((p) => (
-            <ProjectCard key={p.id} project={p} />
-          ))}
-        </div>
+        {shown.map((p, i) => (
+          <Panel key={p.id} project={p} index={i} />
+        ))}
 
-        <div className="flex md:hidden">
-          <Link
-            href="/projects"
-            className="text-sm font-medium text-accent border border-accent/30 px-5 py-2.5 rounded hover:bg-accent-light transition-colors"
-          >
-            View all 10 projects →
-          </Link>
-        </div>
+        {/* End panel */}
+        <Link
+          href="/projects"
+          className="group shrink-0 w-full lg:w-[min(420px,32vw)] lg:min-h-[62vh] min-h-[200px] rounded-lg border border-dashed border-border flex flex-col items-center justify-center gap-4 text-ink-muted hover:text-accent hover:border-accent/50 transition-colors duration-300"
+        >
+          <span className="font-serif text-6xl font-light">+{projects.length - shown.length}</span>
+          <span className="text-sm font-medium inline-flex items-center gap-2">
+            All projects
+            <span className="transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-x-1">→</span>
+          </span>
+        </Link>
       </div>
     </section>
   )

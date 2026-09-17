@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion"
+import { EASE } from "@/lib/motion"
 
 const navLinks = [
   { label: "About", href: "/about" },
@@ -15,29 +16,34 @@ const navLinks = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const [hidden, setHidden] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const pathname = usePathname()
   const isHome = pathname === "/"
+  const { scrollY } = useScroll()
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
+  // Tuck the bar away while scrolling down, bring it back on the first upward nudge
+  useMotionValueEvent(scrollY, "change", (y) => {
+    const prev = scrollY.getPrevious() ?? 0
+    setScrolled(y > 24)
+    setHidden(y > prev && y > 140 && !menuOpen)
+  })
 
   // Close mobile menu on route change
   useEffect(() => setMenuOpen(false), [pathname])
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      <motion.header
+        animate={{ y: hidden ? "-100%" : "0%" }}
+        transition={{ duration: 0.6, ease: EASE }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
           scrolled || !isHome
-            ? "bg-cream/90 backdrop-blur-md border-b border-border shadow-sm"
+            ? "bg-cream/90 backdrop-blur-md border-b border-border"
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
           {/* Logo */}
           <Link
             href="/"
@@ -97,7 +103,7 @@ export default function Navbar() {
             />
           </button>
         </div>
-      </header>
+      </motion.header>
 
       {/* Mobile menu */}
       <AnimatePresence>

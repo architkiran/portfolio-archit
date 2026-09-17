@@ -5,6 +5,8 @@ export interface Project {
   tags: string[]
   github: string
   featured?: boolean
+  /** Headline number shown large on the home-page panel */
+  metric?: { value: string; label: string }
 }
 
 export interface Experience {
@@ -35,6 +37,7 @@ export const projects: Project[] = [
       "Identified $141K in annual margin leakage across a $130M payments portfolio by statistically modeling interchange spreads across 220 merchants, card networks, and MCC tiers in PostgreSQL, and proposed a segment-level repricing strategy visualized in a 3-page Power BI dashboard.",
     tags: ["PostgreSQL", "Power BI", "Payments", "Financial Analytics", "Pricing Strategy"],
     github: "https://github.com/architkiran",
+    metric: { value: "$141K", label: "annual margin leakage identified" },
     featured: true,
   },
   {
@@ -44,6 +47,7 @@ export const projects: Project[] = [
       "Surfaced $8.1M in unreconciled exposure by validating and analyzing PMS and Custodian feeds, classifying 1,560 position-days by severity, and delivering findings through a 3-page Power BI dashboard.",
     tags: ["Python", "SQL", "Power BI", "Fintech", "Reconciliation"],
     github: "https://github.com/architkiran/Position-break-intelligence",
+    metric: { value: "$8.1M", label: "unreconciled exposure surfaced" },
     featured: true,
   },
   {
@@ -53,6 +57,7 @@ export const projects: Project[] = [
       "Automated financial data collection for 30+ public companies via Python APIs, computed 10+ KPIs (P/E, ROE, margins), and built interactive Plotly visualizations for executive-level trend analysis.",
     tags: ["Python", "Plotly", "APIs", "Financial Analytics", "KPI"],
     github: "https://github.com/architkiran/financial-performance-dashboard",
+    metric: { value: "30+", label: "public companies tracked" },
     featured: true,
   },
   {
@@ -62,6 +67,7 @@ export const projects: Project[] = [
       "Cleaned a 100K-row manufacturing dataset through an 8-step Python pipeline; identified a 9.7pp machine defect spread and built a 3-page Power BI dashboard with DAX measures tracking OEE, scrap cost, and maintenance signals.",
     tags: ["Python", "Power BI", "DAX", "SQL", "Manufacturing Analytics"],
     github: "https://github.com/architkiran/Manufacturing-analytics",
+    metric: { value: "9.7pp", label: "machine defect spread found" },
   },
   {
     id: 5,
@@ -70,6 +76,7 @@ export const projects: Project[] = [
       "Engineered distributed PySpark and SQL pipelines processing 2M+ real-time traffic records, performing EDA and anomaly detection to uncover congestion patterns and improve route efficiency by 18%.",
     tags: ["PySpark", "Python", "SQL", "Big Data", "Streaming Analytics"],
     github: "https://github.com/architkiran/Live-Traffic-Data-Analysis",
+    metric: { value: "2M+", label: "real-time records processed" },
   },
   {
     id: 6,

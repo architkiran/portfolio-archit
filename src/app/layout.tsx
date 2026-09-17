@@ -1,7 +1,11 @@
 import type { Metadata } from "next"
+import { MotionConfig } from "framer-motion"
 import "./globals.css"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
+import SmoothScroll from "@/components/motion/SmoothScroll"
+import Cursor from "@/components/motion/Cursor"
+import { IntroProvider } from "@/components/motion/IntroProvider"
 
 export const metadata: Metadata = {
   title: "Archit Kiran Kumar — Data & Business Analytics",
@@ -13,9 +17,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <MotionConfig reducedMotion="user">
+          <IntroProvider>
+            <SmoothScroll>
+              <Cursor />
+              <Navbar />
+              <main>{children}</main>
+              <Footer />
+            </SmoothScroll>
+          </IntroProvider>
+        </MotionConfig>
       </body>
     </html>
   )
