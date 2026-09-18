@@ -42,7 +42,7 @@ export default function About() {
             </motion.div>
             <FadeUp delay={0.3} className="mt-6 flex items-center gap-2 text-[11px] tracking-[0.18em] uppercase text-ink-muted">
               <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              Open to Data Analyst roles · 2026
+              Open to Data Analyst roles · 2026–2027
             </FadeUp>
           </div>
 

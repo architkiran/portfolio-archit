@@ -71,7 +71,7 @@ export default function Hero() {
 
             <Fade ready={ready} delay={d + 0.9} className="mt-8 max-w-md text-ink-muted text-base md:text-lg leading-relaxed">
               MS Computer Science at Boston University. Previously Data Analyst at BU Spark and
-              Millicent Technologies — SQL, Python, Power BI. Open to Data Analyst roles in 2026.
+              Millicent Technologies — SQL, Python, Power BI. Open to Data Analyst roles in 2026–2027.
             </Fade>
 
             <Fade ready={ready} delay={d + 1.05} className="mt-10 flex flex-wrap items-center gap-3">
