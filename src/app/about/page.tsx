@@ -20,7 +20,7 @@ const beyondTech = [
 ]
 
 const paragraphs = [
-  "I'm an international student from India pursuing my Master's in Computer Science at Boston University (Class of 2026), with a deep focus on data analytics and fintech — where numbers tell stories and dashboards drive decisions.",
+  "I'm an international student from India pursuing my Master's in Computer Science at Boston University (Class of 2027), with a deep focus on data analytics and fintech — where numbers tell stories and dashboards drive decisions.",
   "My work sits at the intersection of rigorous data engineering and human-readable design. I believe the best analysis is the kind that gets used — and that means building tools that are not just accurate, but intuitive and clear.",
   "Most recently a Data Analyst at BU Spark, and previously an intern at Millicent Technologies and InternPe, where I built financial dashboards, automated reconciliation pipelines, and brought structure to messy data problems that real teams depended on every day.",
 ]
