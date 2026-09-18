@@ -13,33 +13,43 @@ const GITHUB_ICON = (
   </svg>
 )
 
-// Shared with /projects page — grid card
-export function ProjectCard({ project, featured = false }: { project: Project; featured?: boolean }) {
+// Shared with /projects page — grid card. Featured cards can take a pastel
+// tint and show their headline metric.
+export function ProjectCard({ project, featured = false, tint }: { project: Project; featured?: boolean; tint?: string }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-30px" }}
       transition={{ duration: 0.8, ease: EASE }}
-      className={`group relative bg-card border border-border rounded-2xl flex flex-col
-        hover:-translate-y-1 hover:shadow-[0_20px_50px_-24px_rgba(14,21,36,0.25)] transition-all duration-300
+      className={`group relative rounded-3xl flex flex-col border transition-all duration-300
+        hover:-translate-y-1 hover:shadow-[0_24px_60px_-28px_rgba(14,21,36,0.3)]
+        ${tint ? `${tint} border-white/70` : "bg-card border-border"}
         ${featured ? "p-8" : "p-6"}`}
     >
-      {featured && (
-        <span className="inline-block text-[10px] tracking-[0.18em] text-accent uppercase font-medium mb-4">Featured</span>
-      )}
-      <h3 className={`font-serif text-ink leading-snug mb-3 group-hover:text-accent transition-colors duration-200 ${featured ? "text-3xl" : "text-2xl"}`}>
+      <div className="flex items-center justify-between mb-5">
+        {featured ? (
+          <span className="text-[10px] tracking-[0.18em] text-ink/60 uppercase font-medium">Featured</span>
+        ) : (
+          <span />
+        )}
+        {featured && project.metric && (
+          <span className="font-serif text-3xl leading-none text-ink">{project.metric.value}</span>
+        )}
+      </div>
+      <h3 className={`font-serif text-ink leading-tight mb-3 group-hover:text-accent transition-colors duration-200 ${featured ? "text-3xl" : "text-2xl"}`}>
         {project.title}
       </h3>
-      <p className="text-ink-muted text-sm leading-relaxed flex-1 mb-5">{project.description}</p>
+      <p className={`text-sm leading-relaxed flex-1 mb-5 ${tint ? "text-ink/75" : "text-ink-muted"}`}>{project.description}</p>
       <div className="flex flex-wrap gap-2 mb-5">
         {project.tags.map((tag) => (
-          <span key={tag} className="text-[11px] border border-border text-ink-muted px-2.5 py-1 rounded-full">{tag}</span>
+          <span key={tag} className={`text-[11px] px-2.5 py-1 rounded-full ${tint ? "bg-white/60 text-ink" : "border border-border text-ink-muted"}`}>{tag}</span>
         ))}
       </div>
-      <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-medium text-ink-muted hover:text-accent transition-colors w-fit">
+      <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-medium text-ink hover:text-accent transition-colors w-fit">
         {GITHUB_ICON}
         View on GitHub
+        <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
       </a>
     </motion.div>
   )

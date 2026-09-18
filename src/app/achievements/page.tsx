@@ -2,6 +2,10 @@
 
 import Image from "next/image"
 import { motion } from "framer-motion"
+import { EASE } from "@/lib/motion"
+import PageHeader from "@/components/PageHeader"
+import Tilt from "@/components/motion/Tilt"
+import { RevealText, FadeUp } from "@/components/motion/Reveal"
 
 const achievements = [
   {
@@ -53,86 +57,70 @@ const leadershipItems = [
   },
 ]
 
+const tints = ["bg-mint", "bg-lilac", "bg-apricot", "bg-sky"]
+
 export default function AchievementsPage() {
   return (
-    <main className="min-h-screen bg-cream pt-28 pb-24">
-      <div className="max-w-6xl mx-auto px-6">
+    <main className="min-h-screen bg-cream pb-32">
+      <PageHeader
+        label="Recognition"
+        title="Achievements"
+        intro="Milestones that reflect innovation, teamwork, and impact beyond the day-to-day."
+      />
 
-        {/* Header */}
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-[11px] tracking-[0.18em] text-accent uppercase font-medium mb-4"
-        >
-          Recognition
-        </motion.p>
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-          className="font-serif text-5xl md:text-7xl font-light text-ink mb-5"
-        >
-          Achievements
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.25 }}
-          className="text-ink-muted text-base max-w-xl mb-16 leading-relaxed"
-        >
-          Milestones that reflect innovation, teamwork, and impact beyond the day-to-day.
-        </motion.p>
-
-        {/* Achievement cards */}
-        <div className="grid md:grid-cols-2 gap-6 mb-20">
+      <div className="max-w-6xl mx-auto px-6 md:px-12">
+        <div className="grid md:grid-cols-2 gap-6 mb-32">
           {achievements.map((a, i) => (
-            <motion.div
+            <motion.article
               key={a.id}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
-              transition={{ duration: 0.55, delay: i * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
-              className="bg-card border border-border rounded-lg overflow-hidden hover:border-accent/40 hover:-translate-y-0.5 hover:shadow-md transition-all duration-300"
+              viewport={{ once: true, margin: "-10% 0px" }}
+              transition={{ duration: 0.9, ease: EASE, delay: i * 0.08 }}
+              className={`group rounded-3xl overflow-hidden border border-white/70 ${tints[i % tints.length]}`}
             >
-              <div className="overflow-hidden h-56 bg-warm">
+              <div className="relative h-64 md:h-72 overflow-hidden bg-white/40">
                 <Image
                   src={a.img}
                   alt={a.title}
-                  width={600}
-                  height={400}
-                  className={`w-full h-full transition-transform duration-500 hover:scale-105 ${
-                    a.title.includes("Certificate") ? "object-contain p-4" : "object-cover"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 560px"
+                  className={`transition-transform duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04] ${
+                    a.title.includes("Certificate") ? "object-contain p-6" : "object-cover"
                   }`}
                 />
               </div>
-              <div className="p-6">
-                <div className="flex items-start justify-between gap-3 mb-3">
-                  <h2 className="font-serif text-xl font-medium text-ink">{a.title}</h2>
-                  <span className="text-xs text-ink-muted tracking-wide shrink-0 mt-1">{a.year}</span>
+              <div className="p-7 md:p-8">
+                <div className="flex items-start justify-between gap-4 mb-3">
+                  <h2 className="font-serif text-3xl text-ink leading-tight">{a.title}</h2>
+                  <span className="text-[11px] tracking-[0.16em] uppercase text-ink/60 shrink-0 mt-2">{a.year}</span>
                 </div>
-                <p className="text-ink-muted text-sm leading-relaxed">{a.description}</p>
+                <p className="text-sm text-ink/70 leading-relaxed">{a.description}</p>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
 
-        {/* Leadership divider */}
-        <p className="text-[11px] tracking-[0.18em] text-ink-muted uppercase font-medium mb-8 pb-3 border-b border-border">
-          Leadership &amp; Activities
-        </p>
+        <FadeUp>
+          <p className="text-[11px] tracking-[0.2em] text-accent uppercase font-medium mb-6">Leadership &amp; activities</p>
+        </FadeUp>
+        <RevealText as="h2" text="Beyond the classroom" className="font-serif text-4xl md:text-6xl tracking-tight text-ink leading-[1.05] mb-12" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {leadershipItems.map((item, i) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="bg-card border border-border rounded-lg p-6 hover:border-accent/40 transition-colors"
+              viewport={{ once: true, margin: "-10% 0px" }}
+              transition={{ duration: 0.9, ease: EASE, delay: i * 0.08 }}
             >
-              <h3 className="font-serif text-lg font-medium text-ink mb-2">{item.title}</h3>
-              <p className="text-ink-muted text-sm leading-relaxed">{item.description}</p>
+              <Tilt max={5} className="h-full rounded-3xl">
+                <div className="h-full rounded-3xl p-7 bg-card border border-border">
+                  <span className="font-serif text-2xl text-ink/40 block mb-6">{String(i + 1).padStart(2, "0")}</span>
+                  <h3 className="font-serif text-2xl text-ink mb-2">{item.title}</h3>
+                  <p className="text-sm text-ink-muted leading-relaxed">{item.description}</p>
+                </div>
+              </Tilt>
             </motion.div>
           ))}
         </div>

@@ -1,8 +1,13 @@
 "use client"
 
-import { motion } from "framer-motion"
 import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { contact } from "@/data/content"
+import { EASE } from "@/lib/motion"
+import PageHeader from "@/components/PageHeader"
+import Mesh from "@/components/motion/Mesh"
+import Magnetic from "@/components/motion/Magnetic"
+import { FadeUp } from "@/components/motion/Reveal"
 
 const contactLinks = [
   {
@@ -36,6 +41,9 @@ const contactLinks = [
     ),
   },
 ]
+
+const field =
+  "w-full px-5 py-3.5 rounded-2xl border border-border bg-card text-ink text-sm placeholder-ink-muted/50 focus:outline-none focus:border-accent focus:ring-4 focus:ring-accent/10 transition-all"
 
 export default function ContactPage() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle")
@@ -71,140 +79,87 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="min-h-screen bg-cream pt-28 pb-24">
-      <div className="max-w-6xl mx-auto px-6">
+    <main className="min-h-screen bg-cream pb-32">
+      <PageHeader
+        label="Get in touch"
+        title="Let's talk"
+        intro="Always open to interesting conversations about data, design, or fintech. Whether it's a role, a project, or just a good idea — I'd love to hear from you."
+      />
 
-        {/* Header */}
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-[11px] tracking-[0.18em] text-accent uppercase font-medium mb-4"
-        >
-          Get in touch
-        </motion.p>
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-          className="font-serif text-5xl md:text-7xl font-light text-ink mb-5"
-        >
-          Let&apos;s talk
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.25 }}
-          className="text-ink-muted text-base max-w-xl mb-16 leading-relaxed"
-        >
-          Always open to interesting conversations about data, design, or fintech. Whether it&apos;s
-          a role, a project, or just a good idea — I&apos;d love to hear from you.
-        </motion.p>
-
-        <div className="grid md:grid-cols-2 gap-14 items-start">
-          {/* Contact form */}
-          <motion.form
-            onSubmit={handleSubmit}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.35 }}
-            className="bg-card border border-border rounded-lg p-8 space-y-6"
-          >
-            <div>
-              <label className="block text-xs font-medium text-ink-muted tracking-wide mb-2">
-                Your Name
-              </label>
-              <input
-                name="name"
-                type="text"
-                placeholder="Jane Smith"
-                required
-                className="w-full px-4 py-3 rounded border border-border bg-cream text-ink text-sm placeholder-ink-muted/50 focus:outline-none focus:border-accent transition-colors"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-ink-muted tracking-wide mb-2">
-                Email Address
-              </label>
-              <input
-                name="email"
-                type="email"
-                placeholder="jane@example.com"
-                required
-                className="w-full px-4 py-3 rounded border border-border bg-cream text-ink text-sm placeholder-ink-muted/50 focus:outline-none focus:border-accent transition-colors"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-ink-muted tracking-wide mb-2">
-                Message
-              </label>
-              <textarea
-                name="message"
-                placeholder="Tell me about your project or idea..."
-                required
-                rows={5}
-                className="w-full px-4 py-3 rounded border border-border bg-cream text-ink text-sm placeholder-ink-muted/50 focus:outline-none focus:border-accent transition-colors resize-none"
-              />
-            </div>
-
-            <button
-              type="submit"
-              disabled={status === "sending"}
-              className="w-full py-3 bg-accent text-cream text-sm font-medium rounded hover:bg-accent/90 disabled:opacity-60 transition-colors"
-            >
-              {status === "sending" ? "Sending…" : "Send Message"}
-            </button>
-
-            {status === "success" && (
-              <p className="text-sm text-center text-green-700 font-medium">
-                Message sent — I&apos;ll be in touch soon!
-              </p>
-            )}
-            {status === "error" && (
-              <p className="text-sm text-center text-red-600 font-medium">
-                Something went wrong. Try emailing me directly.
-              </p>
-            )}
-          </motion.form>
-
-          {/* Contact links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.45 }}
-            className="flex flex-col gap-4 pt-2"
-          >
-            {contactLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target={link.label !== "Email" ? "_blank" : undefined}
-                rel={link.label !== "Email" ? "noopener noreferrer" : undefined}
-                className="group flex items-center gap-4 p-5 bg-card border border-border rounded-lg hover:border-accent hover:-translate-y-0.5 hover:shadow-sm transition-all duration-200"
-              >
-                <span className="text-ink-muted group-hover:text-accent transition-colors">
-                  {link.icon}
-                </span>
-                <div>
-                  <p className="text-[10px] text-ink-muted font-medium tracking-widest uppercase mb-0.5">
-                    {link.label}
-                  </p>
-                  <p className="text-sm font-medium text-ink group-hover:text-accent transition-colors">
-                    {link.display}
-                  </p>
+      <div className="max-w-6xl mx-auto px-6 md:px-12">
+        <div className="grid lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] gap-6 lg:gap-8 items-start">
+          {/* Form on a mesh panel */}
+          <FadeUp delay={0.2}>
+            <div className="relative rounded-[2rem] overflow-hidden border border-white/70 bg-card">
+              <Mesh opacity={0.8} />
+              <form onSubmit={handleSubmit} className="relative p-7 md:p-10 space-y-5">
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block text-[11px] tracking-[0.16em] uppercase font-medium text-ink-muted mb-2">Your name</label>
+                    <input name="name" type="text" placeholder="Jane Smith" required className={field} />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] tracking-[0.16em] uppercase font-medium text-ink-muted mb-2">Email</label>
+                    <input name="email" type="email" placeholder="jane@example.com" required className={field} />
+                  </div>
                 </div>
-                <svg
-                  className="w-4 h-4 text-ink-muted ml-auto opacity-0 group-hover:opacity-100 transition-opacity"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={1.5}
-                  viewBox="0 0 24 24"
+                <div>
+                  <label className="block text-[11px] tracking-[0.16em] uppercase font-medium text-ink-muted mb-2">Message</label>
+                  <textarea name="message" placeholder="Tell me about your project or idea..." required rows={6} className={`${field} resize-none`} />
+                </div>
+
+                <div className="flex flex-wrap items-center gap-4 pt-2">
+                  <Magnetic>
+                    <button
+                      type="submit"
+                      disabled={status === "sending"}
+                      className="group relative inline-flex items-center gap-3 px-7 py-3.5 bg-ink text-cream text-sm font-medium rounded-full overflow-hidden disabled:opacity-60"
+                    >
+                      <span className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]" />
+                      <span className="relative">{status === "sending" ? "Sending…" : "Send message"}</span>
+                      <span className="relative transition-transform duration-500 group-hover:translate-x-1">→</span>
+                    </button>
+                  </Magnetic>
+                  <AnimatePresence mode="wait">
+                    {status === "success" && (
+                      <motion.p key="ok" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.4, ease: EASE }} className="text-sm text-accent font-medium">
+                        Message sent — I&apos;ll be in touch soon!
+                      </motion.p>
+                    )}
+                    {status === "error" && (
+                      <motion.p key="err" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.4, ease: EASE }} className="text-sm text-red-600 font-medium">
+                        Something went wrong. Try emailing me directly.
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </form>
+            </div>
+          </FadeUp>
+
+          {/* Direct links */}
+          <FadeUp delay={0.3}>
+            <div className="rounded-[2rem] bg-card border border-border divide-y divide-border overflow-hidden">
+              {contactLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target={link.label !== "Email" ? "_blank" : undefined}
+                  rel={link.label !== "Email" ? "noopener noreferrer" : undefined}
+                  className="group flex items-center gap-5 px-7 py-6 hover:bg-warm/70 transition-colors"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                </svg>
-              </a>
-            ))}
-          </motion.div>
+                  <span className="w-11 h-11 rounded-full bg-warm flex items-center justify-center text-ink-muted group-hover:bg-accent group-hover:text-cream transition-colors">
+                    {link.icon}
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-[10px] text-ink-muted font-medium tracking-[0.16em] uppercase mb-0.5">{link.label}</p>
+                    <p className="text-sm font-medium text-ink group-hover:text-accent transition-colors truncate">{link.display}</p>
+                  </div>
+                  <span className="ml-auto text-ink-muted group-hover:text-accent transition-all duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">↗</span>
+                </a>
+              ))}
+            </div>
+          </FadeUp>
         </div>
       </div>
     </main>
