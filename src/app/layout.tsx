@@ -13,8 +13,9 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  // suppressHydrationWarning: browser extensions inject attributes on <html> before hydration
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
         <MotionConfig reducedMotion="user">
           <IntroProvider>
