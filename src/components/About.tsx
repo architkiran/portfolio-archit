@@ -19,7 +19,7 @@ export default function About() {
   const imgY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"])
 
   return (
-    <section id="about" className="py-32 md:py-40 bg-warm">
+    <section id="about" className="py-32 md:py-40 bg-cream">
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         <FadeUp>
           <p className="text-[11px] tracking-[0.2em] text-accent uppercase font-medium mb-6">About</p>
@@ -34,7 +34,7 @@ export default function About() {
               whileInView={{ clipPath: "inset(0% 0 0 0)" }}
               viewport={{ once: true, margin: "-15% 0px" }}
               transition={{ duration: 1.3, ease: EASE }}
-              className="relative aspect-[4/5] w-full max-w-sm overflow-hidden rounded-sm"
+              className="relative aspect-[4/5] w-full max-w-sm overflow-hidden rounded-3xl"
             >
               <motion.div style={{ y: imgY }} className="absolute inset-[-10%]">
                 <Image src="/profile.jpg" alt="Archit Kiran Kumar" fill sizes="(max-width: 768px) 100vw, 400px" className="object-cover" priority={false} />
@@ -51,14 +51,14 @@ export default function About() {
             <RevealText
               as="h2"
               text="Hello, I'm Archit"
-              className="font-serif text-5xl md:text-7xl font-light text-ink leading-[1.05] mb-10"
+              className="font-serif text-5xl md:text-7xl tracking-tight text-ink leading-[1.05] mb-10"
             />
             <div className="space-y-6">
               {paragraphs.map((t, i) => (
                 <ScrubText
                   key={i}
                   text={t}
-                  className={`leading-relaxed text-ink ${i === 0 ? "text-xl md:text-2xl font-serif" : "text-base md:text-lg"}`}
+                  className={`leading-relaxed text-ink ${i === 0 ? "text-xl md:text-2xl" : "text-base md:text-lg"}`}
                 />
               ))}
             </div>

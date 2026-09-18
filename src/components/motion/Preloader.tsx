@@ -4,6 +4,7 @@ import { useEffect, useLayoutEffect, useState } from "react"
 import { motion, AnimatePresence, useReducedMotion, useMotionValue } from "framer-motion"
 import { EASE, INTRO_KEY } from "@/lib/motion"
 import { useIntro } from "./IntroProvider"
+import Mesh from "./Mesh"
 
 // First-visit-only intro: ink curtain, counter to 100, name reveal, then the
 // curtain lifts and hands off to the hero via IntroProvider.
@@ -54,14 +55,15 @@ export default function Preloader() {
       {show && (
         <motion.div
           key="preloader"
-          className="fixed inset-0 z-[100] bg-ink text-cream flex items-center justify-center"
+          className="fixed inset-0 z-[100] bg-cream text-ink flex items-center justify-center"
           exit={{ y: "-100%", borderRadius: "0 0 50% 50% / 0 0 8vh 8vh" }}
           transition={{ duration: 1, ease: EASE }}
         >
-          <div className="absolute top-6 left-6 md:top-8 md:left-12 text-[10px] tracking-[0.22em] uppercase text-cream/50">
+          <Mesh opacity={0.9} />
+          <div className="absolute top-6 left-6 md:top-8 md:left-12 text-[10px] tracking-[0.22em] uppercase text-ink-muted">
             Archit Kiran Kumar
           </div>
-          <div className="absolute top-6 right-6 md:top-8 md:right-12 text-[10px] tracking-[0.22em] uppercase text-cream/50">
+          <div className="absolute top-6 right-6 md:top-8 md:right-12 text-[10px] tracking-[0.22em] uppercase text-ink-muted">
             Portfolio · 2026
           </div>
 
@@ -70,12 +72,12 @@ export default function Preloader() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.8, ease: EASE, delay: 0.15 }}
-            className="font-serif text-[clamp(1.6rem,4vw,3rem)] font-light tracking-wide text-center px-6"
+            className="relative font-serif text-[clamp(2rem,5vw,4rem)] tracking-tight text-center px-6"
           >
             Data, <em className="italic text-accent">designed</em> to be understood.
           </motion.p>
 
-          <div className="absolute bottom-6 right-6 md:bottom-10 md:right-12 font-serif text-[clamp(3rem,10vw,7rem)] font-light leading-none tabular-nums text-cream/90">
+          <div className="absolute bottom-6 right-6 md:bottom-10 md:right-12 font-serif text-[clamp(3rem,10vw,7rem)] leading-none tabular-nums text-ink">
             {String(count).padStart(3, "0")}
           </div>
 

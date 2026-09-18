@@ -1,18 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #1C1625;
-  --color-ink-muted: #8A7F8E;
-  --color-cream: #FAF8F5;
-  --color-warm: #F2EDE8;
-  --color-accent: #C8622A;
-  --color-accent-light: #F4E5D8;
-  --color-border: #E5DDD4;
+  /* V2 palette — porcelain ground, deep-navy ink, cobalt accent, pastel tints */
+  --color-ink: #0E1524;
+  --color-ink-muted: #5C6675;
+  --color-cream: #F5F6F8;
+  --color-warm: #EDF0F5;
+  --color-accent: #2E5BFF;
+  --color-accent-light: #DCE5FF;
+  --color-border: #E0E5EE;
   --color-card: #FFFFFF;
+  --color-mint: #CFF4E3;
+  --color-lilac: #E5DCFF;
+  --color-apricot: #FFE4C4;
+  --color-sky: #D3E8FF;
 
-  --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
-  --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
 }
 
 *,
@@ -42,20 +47,27 @@ html.intro-lock body {
   overflow: hidden;
 }
 
-/* Custom cursor replaces the native one only on fine pointers */
-html.has-cursor,
-html.has-cursor a,
-html.has-cursor button,
-html.has-cursor [role="button"] {
-  cursor: none;
-}
-
 /* Film grain */
 .grain {
   opacity: 0.04;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 160px 160px;
+}
+
+/* Pastel mesh — four blurred blobs drifting slowly */
+.mesh-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  will-change: transform;
+  animation: drift 26s ease-in-out infinite;
+}
+@keyframes drift {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(6%, -8%) scale(1.08); }
+  66%  { transform: translate(-5%, 6%) scale(0.96); }
+  100% { transform: translate(0, 0) scale(1); }
 }
 
 /* Skills marquee — two copies of the row, slide by exactly one copy */
@@ -103,20 +115,21 @@ html.has-cursor [role="button"] {
     scroll-behavior: auto;
   }
   .marquee,
-  .marquee-reverse {
+  .marquee-reverse,
+  .mesh-blob {
     animation: none;
   }
 }
 
 body {
-  background-color: #FAF8F5;
-  color: #1C1625;
-  font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+  background-color: #F5F6F8;
+  color: #0E1524;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .font-serif {
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: "Instrument Serif", Georgia, serif;
 }
 

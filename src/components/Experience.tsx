@@ -13,7 +13,7 @@ export default function Experience() {
   const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1])
 
   return (
-    <section id="experience" className="py-32 md:py-40 bg-warm">
+    <section id="experience" className="py-32 md:py-40 bg-cream">
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         <div className="grid md:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] gap-12 md:gap-20">
           <div className="md:sticky md:top-32 self-start">
@@ -23,7 +23,7 @@ export default function Experience() {
             <RevealText
               as="h2"
               text="Where I've worked"
-              className="font-serif text-5xl md:text-7xl font-light text-ink leading-[1.05] mb-8"
+              className="font-serif text-5xl md:text-7xl tracking-tight text-ink leading-[1.05] mb-8"
             />
             <FadeUp delay={0.2}>
               <Link href="/experience" className="group inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-accent transition-colors">
@@ -49,7 +49,7 @@ export default function Experience() {
               >
                 <span className="absolute -left-8 md:-left-12 top-2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-cream border-2 border-accent" />
                 <span className="text-[11px] tracking-[0.18em] text-ink-muted uppercase font-medium">{exp.period}</span>
-                <h3 className="font-serif text-3xl md:text-4xl font-normal text-ink mt-2 mb-1">{exp.company}</h3>
+                <h3 className="font-serif text-3xl md:text-4xl text-ink mt-2 mb-1">{exp.company}</h3>
                 <p className="text-accent text-sm font-medium mb-6">{exp.role}</p>
                 <ul className="space-y-3">
                   {exp.bullets.map((b, j) => (
