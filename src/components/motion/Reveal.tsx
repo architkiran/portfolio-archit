@@ -55,7 +55,8 @@ export function RevealText({
             >
               {word}
             </motion.span>
-          </span>{" "}
+          </span>
+          {i < text.split(" ").length - 1 && " "}
         </span>
       ))}
     </Comp>

@@ -51,18 +51,27 @@ export default function Hero() {
           <motion.div style={{ y: textY, opacity }}>
             <Fade ready={ready} delay={d} className="flex items-center gap-3 text-[11px] tracking-[0.2em] uppercase text-ink-muted mb-8">
               <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              Archit Kiran Kumar · Data Analyst · Boston
+              Data Analyst · Boston, MA
             </Fade>
 
-            <h1 className="font-serif text-[clamp(3.2rem,7.2vw,6.6rem)] leading-[0.98] tracking-[-0.02em] text-ink">
-              <RevealText as="span" text="I turn messy data" animate={ready} delay={d + 0.1} className="block" />
-              <RevealText as="span" text="into decisions" animate={ready} delay={d + 0.35} className="block italic text-accent" />
-              <RevealText as="span" text="people trust." animate={ready} delay={d + 0.55} className="block" />
+            <h1 className="font-serif text-[clamp(3.6rem,8.2vw,7.4rem)] leading-[0.95] tracking-[-0.02em] text-ink">
+              <RevealText as="span" text="Archit" animate={ready} delay={d + 0.1} className="block" />
+              <span className="block italic whitespace-nowrap">
+                <RevealText as="span" text="Kiran Kumar" animate={ready} delay={d + 0.3} className="inline" />
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={ready ? { opacity: 1 } : { opacity: 0 }}
+                  transition={{ duration: 0.6, delay: d + 0.9 }}
+                  className="text-accent not-italic"
+                >
+                  .
+                </motion.span>
+              </span>
             </h1>
 
             <Fade ready={ready} delay={d + 0.9} className="mt-8 max-w-md text-ink-muted text-base md:text-lg leading-relaxed">
-              MS Computer Science at Boston University. SQL, Python and Power BI — with a designer&apos;s eye for what
-              gets used. Open to Data Analyst roles in 2026.
+              MS Computer Science at Boston University. Previously Data Analyst at BU Spark and
+              Millicent Technologies — SQL, Python, Power BI. Open to Data Analyst roles in 2026.
             </Fade>
 
             <Fade ready={ready} delay={d + 1.05} className="mt-10 flex flex-wrap items-center gap-3">
